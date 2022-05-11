@@ -2,6 +2,7 @@ package cnr.isti.data.input.protocollo;
 
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Date;
 
 import org.apache.logging.log4j.Logger;
 import org.apache.commons.codec.binary.Hex;
@@ -68,7 +69,7 @@ public class Reader {
 		byte[] msg = Arrays.copyOfRange(message, 12, fine);// 2 + LEN Max 2033
 
 		if (msg.length > 10) {
-			this.readmsg(msg);
+			this.readmsg(msg,Service.getDateTime(TIME_INFO) );
 		}
 
 		String hex = Hex.encodeHexString(msg);
@@ -97,9 +98,9 @@ public class Reader {
 
 	}
 
-	private void readmsg(byte[] msg) {
+	private void readmsg(byte[] msg, Date d ) {
 
-		DecodeMessage dm = new DecodeMessage(msg);
+		DecodeMessage dm = new DecodeMessage(msg, d);
 		System.out.println(dm);
 		byte[] range = Arrays.copyOfRange(msg, 2, msg.length);
 /*

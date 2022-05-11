@@ -2,6 +2,7 @@ package cnr.isti.data.input.protocollo;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import com.alibaba.fastjson2.annotation.JSONField;
@@ -9,7 +10,7 @@ import com.alibaba.fastjson2.annotation.JSONField;
 
 public class MessageDiretto {
 
-	@JSONField(name = "Address")
+	@JSONField(name = "Address")//, ordinal = 1)
 	String Address;
 	@JSONField(name = "diagnostica")
 	DecodificaDiagnostica diagnostica;
@@ -32,10 +33,14 @@ public class MessageDiretto {
 	@JSONField(name = "DigiOutput")
 	DecodificaDigitalOutput DigiOutput;
 	
-	
+	@JSONField(name="Data", format="dd/MM/yyyy  HH:mm:ss" , ordinal = 2)
+	private Date date;
+	@JSONField(name="millisencod")
+	private long millisencod;
 
-	public MessageDiretto(byte[] range) {
-
+	public MessageDiretto(byte[] range, Date date) {
+		this.date=date;
+		this.millisencod=date.getTime();
 		Address = String.format("%02x", range[0]);
 		byte[] bitdiagnostica = Arrays.copyOfRange(range, 1, 5);
 		
@@ -110,6 +115,22 @@ public class MessageDiretto {
 
 	public void setAddress(String address) {
 		Address = address;
+	}
+
+
+
+
+
+	public long getMillisencod() {
+		return millisencod;
+	}
+
+
+
+
+
+	public void setMillisencod(long millisencod) {
+		this.millisencod = millisencod;
 	}
 
 
@@ -230,6 +251,22 @@ public class MessageDiretto {
 
 	public void setLastindex(int lastindex) {
 		this.lastindex = lastindex;
+	}
+
+
+
+
+
+	public Date getDate() {
+		return date;
+	}
+
+
+
+
+
+	public void setDate(Date date) {
+		this.date = date;
 	}
 
 

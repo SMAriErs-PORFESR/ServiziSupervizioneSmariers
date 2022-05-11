@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.math.BigInteger;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
+import java.sql.Date;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
@@ -81,6 +82,27 @@ public class Service {
 		// System.out.println(formatter.format(ts));
 
 		return formatter.format(ts);
+	}
+	
+	public static Date getDateTime(long time) {
+		Instant epoch = Instant.parse("2000-01-01T00:00:00.00Z");
+		Instant later = epoch.plusSeconds(time);
+
+		ZoneOffset offset = ZoneOffset.of("+01:00");
+
+		OffsetDateTime odt = later.atOffset(offset);
+
+		// LocalDate ld = odt.toLocalDate() ;
+		// Times = later.getEpochSecond();
+		// Date Datas = Date.from(later);
+		// log.info("datas"+Datas);
+
+		long Timestamp = odt.toInstant().toEpochMilli();
+		Timestamp ts = new Timestamp(Timestamp);
+		//SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+		// System.out.println(formatter.format(ts));
+
+		return new Date(ts.getTime());
 	}
 
 	public static final byte[] integerToTwoBytes(int value) throws IOException {

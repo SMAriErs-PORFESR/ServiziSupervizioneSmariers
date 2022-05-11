@@ -2,6 +2,7 @@ package cnr.isti.data.input.protocollo;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import com.alibaba.fastjson2.JSON;
@@ -11,7 +12,7 @@ public class DecodeMessage {
 	List<Message> listamessaggi = new ArrayList<>();
 	List<MessageDiretto> lmd = new ArrayList<>();
 
-	public DecodeMessage(byte[] msg) {
+	public DecodeMessage(byte[] msg, Date date) {
 		byte[] range = Arrays.copyOfRange(msg, 2, msg.length);
 
 		int cicli = range.length / 11;
@@ -31,7 +32,7 @@ public class DecodeMessage {
 			while (index<range.length) {
 				byte[] r = Arrays.copyOfRange(range, index  , range.length );
 				if(r.length>10) {
-				MessageDiretto md = new MessageDiretto(r);
+				MessageDiretto md = new MessageDiretto(r, date);
 				String jsonOutput= JSON.toJSONString(md);
 				System.out.println(jsonOutput);
 				lmd.add(md);
