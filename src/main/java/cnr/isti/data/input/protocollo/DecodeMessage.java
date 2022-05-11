@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import com.alibaba.fastjson2.JSON;
+
 public class DecodeMessage {
 
 	List<Message> listamessaggi = new ArrayList<>();
@@ -30,6 +32,8 @@ public class DecodeMessage {
 				byte[] r = Arrays.copyOfRange(range, index  , range.length );
 				if(r.length>10) {
 				MessageDiretto md = new MessageDiretto(r);
+				String jsonOutput= JSON.toJSONString(md);
+				System.out.println(jsonOutput);
 				lmd.add(md);
 				index += md.getLastindex()+1;
         	

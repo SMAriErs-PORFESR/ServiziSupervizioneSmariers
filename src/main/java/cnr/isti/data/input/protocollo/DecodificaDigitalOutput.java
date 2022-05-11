@@ -3,10 +3,14 @@ package cnr.isti.data.input.protocollo;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.alibaba.fastjson2.annotation.JSONField;
+
 import cnr.isti.data.input.protocollo.util.Service;
 
 public class DecodificaDigitalOutput {
-
+	
+	
+	@JSONField(name = "Output")
 	List<Boolean> Output = new ArrayList<>();
 
 	public DecodificaDigitalOutput(List<Integer> diginputs) {
@@ -32,6 +36,14 @@ public class DecodificaDigitalOutput {
 			i++;
 		}
 		return result;
+	}
+
+	public List<Boolean> getOutput() {
+		return Output;
+	}
+
+	public void setOutput(List<Boolean> output) {
+		Output = output;
 	}
 	
 	

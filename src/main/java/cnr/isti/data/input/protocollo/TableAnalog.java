@@ -55,6 +55,16 @@ public enum TableAnalog {
 	        return "SCORTA";
 	    }
 	    
+	    public static String getMisure(int num)
+	    {
+	        for(TableAnalog policyInfo:TableAnalog.values())
+	        {
+	             if(policyInfo.id == num)
+	                 return policyInfo.MisureU;
+	        }
+	        return "SCORTA";
+	    }
+	    
 	    public static double getPrecision(int policyId)
 	    {
 	        for(TableAnalog policyInfo:TableAnalog.values())

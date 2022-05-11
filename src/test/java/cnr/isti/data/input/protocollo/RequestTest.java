@@ -44,7 +44,7 @@ public class RequestTest {
 		OutputStream output = socket.getOutputStream();
 		output.write(finalmessage);
 		socket.close();*/
-		String hostname = "127.0.0.1";
+		String hostname = "spagnolo2.isti.cnr.it";
 		int port = 9999;
 		
 		try (Socket socket = new Socket(hostname, port)) {
