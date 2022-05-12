@@ -8,6 +8,8 @@ import org.apache.logging.log4j.Logger;
 import org.apache.commons.codec.binary.Hex;
 import org.apache.logging.log4j.LogManager;
 
+import cnr.isti.data.input.protocollo.decode.DecodeMessage;
+import cnr.isti.data.input.protocollo.decode.EsitiScarico;
 import cnr.isti.data.input.protocollo.util.Service;
 
 public class Reader {

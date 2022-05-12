@@ -1,4 +1,4 @@
-package cnr.isti.data.input.protocollo;
+package cnr.isti.data.input.protocollo.decode;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -6,6 +6,9 @@ import java.util.Date;
 import java.util.List;
 
 import com.alibaba.fastjson2.JSON;
+
+import cnr.isti.data.input.protocollo.Message;
+import cnr.isti.data.input.protocollo.MessageDiretto;
 
 public class DecodeMessage {
 

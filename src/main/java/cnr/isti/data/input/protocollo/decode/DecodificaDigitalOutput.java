@@ -1,10 +1,11 @@
-package cnr.isti.data.input.protocollo;
+package cnr.isti.data.input.protocollo.decode;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import com.alibaba.fastjson2.annotation.JSONField;
 
+import cnr.isti.data.input.protocollo.Triple;
 import cnr.isti.data.input.protocollo.util.Service;
 
 public class DecodificaDigitalOutput {

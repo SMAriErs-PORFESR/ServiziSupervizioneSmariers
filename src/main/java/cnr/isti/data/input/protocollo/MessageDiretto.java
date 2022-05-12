@@ -7,6 +7,11 @@ import java.util.List;
 
 import com.alibaba.fastjson2.annotation.JSONField;
 
+import cnr.isti.data.input.protocollo.decode.DecodificaAnalogica;
+import cnr.isti.data.input.protocollo.decode.DecodificaDiagnostica;
+import cnr.isti.data.input.protocollo.decode.DecodificaDigitalInputs;
+import cnr.isti.data.input.protocollo.decode.DecodificaDigitalOutput;
+
 
 public class MessageDiretto {
 

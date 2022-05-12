@@ -1,4 +1,4 @@
-package cnr.isti.data.input.protocollo;
+package cnr.isti.data.input.protocollo.decode;
 
 public enum TableDigitalOutput {
 	
