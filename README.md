@@ -11,9 +11,7 @@
 [![SemVer](https://img.shields.io/badge/SemVer-0.0.1-ff69b4.svg)](https://semver.org/lang/it/)
 
 
-
-# Provider_di_Servizi_-PRV-
-Provider di Servizi (PRV) del Progetto della Regione Toscana **Smart Railway Infrastructures: Efficiency, Reliability and Safety (SmaRIERS)** POR FESR Toscana 2014-2020
+Servizio Supervisione (PSS) del Progetto della Regione Toscana **Smart Railway Infrastructures: Efficiency, Reliability and Safety (SmaRIERS)** POR FESR Toscana 2014-2020
  Bando 1 “Progetti strategici di ricerca e sviluppo” del POR FESR 2014-2020 (azione 1.1.5 sub-azione a1) - Decreto 7.10.2021 n. 18043
 
 
@@ -34,7 +32,7 @@ Provider di Servizi (PRV) del Progetto della Regione Toscana **Smart Railway Inf
 
 Information   | Value
 ------------- | --------
-Component     | Provider di Servizi (PRV)
+Component     | Servizio Supervisione  (SSP)
 Partner       | ISTI-CNR
 WP            | 3
 Responsible   | Giorgio O. Spagnolo <spagnolo at isti.cnr.it>
