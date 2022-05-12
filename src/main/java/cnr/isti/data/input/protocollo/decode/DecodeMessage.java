@@ -54,6 +54,32 @@ public class DecodeMessage {
 		
 
 	}
+	
+	
+
+	public List<Message> getListamessaggi() {
+		return listamessaggi;
+	}
+
+
+
+	public void setListamessaggi(List<Message> listamessaggi) {
+		this.listamessaggi = listamessaggi;
+	}
+
+
+
+	public List<MessageDiretto> getLmd() {
+		return lmd;
+	}
+
+
+
+	public void setLmd(List<MessageDiretto> lmd) {
+		this.lmd = lmd;
+	}
+
+
 
 	@Override
 	public String toString() {

@@ -23,9 +23,9 @@ public class DecodificaAnalogica {
 	long valore;
 	@JSONField(name = "Descrizione")
 	String descrizione;
-	@JSONField(name = "precision")
+	@JSONField(name = "Precision")
 	double precision;
-	@JSONField(name = "misura")
+	@JSONField(name = "Misura")
 	String misura;
 	
 	public DecodificaAnalogica(byte[] msg) {

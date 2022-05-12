@@ -17,12 +17,17 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.List;
 
 import org.apache.commons.codec.DecoderException;
 import org.apache.commons.codec.binary.Hex;
 import org.junit.Test;
 
+import com.alibaba.fastjson2.JSON;
+
+import cnr.isti.data.input.protocollo.decode.DecodeMessage;
 import cnr.isti.data.input.protocollo.util.Service;
+import cnr.isti.mqtt.publisher.Publisher;
 
 public class RequestTestOffline {
 
@@ -54,6 +59,19 @@ public class RequestTestOffline {
 
 		Reader read = new Reader();
 		read.Read(decodee);
+		
+		DecodeMessage dm = read.getDm();
+		
+		List<MessageDiretto> lmdiretto = dm.getLmd();
+		
+		for (MessageDiretto messageDiretto : lmdiretto) {
+			String jsonOutput= JSON.toJSONString(messageDiretto);
+			Publisher pub  = new Publisher();
+			
+			pub.send(jsonOutput.getBytes(), messageDiretto.getAddress());
+			
+		}
+		
 		System.out.println("End");
 		/*
 		

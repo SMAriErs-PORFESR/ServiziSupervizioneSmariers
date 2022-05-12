@@ -13,6 +13,8 @@ import cnr.isti.data.input.protocollo.decode.EsitiScarico;
 import cnr.isti.data.input.protocollo.util.Service;
 
 public class Reader {
+	
+	DecodeMessage dm ;
 
 	private static Logger log = LogManager.getLogger(Reader.class);
 
@@ -102,7 +104,7 @@ public class Reader {
 
 	private void readmsg(byte[] msg, Date d ) {
 
-		DecodeMessage dm = new DecodeMessage(msg, d);
+		dm = new DecodeMessage(msg, d);
 		log.info(dm);
 	/*	byte[] range = Arrays.copyOfRange(msg, 2, msg.length);
 
@@ -116,6 +118,16 @@ public class Reader {
 		String data = Service.getTime(d);
 		int cent = range[10];*/
 		//System.out.println("End");
+	}
+
+	
+	
+	public DecodeMessage getDm() {
+		return dm;
+	}
+
+	public void setDm(DecodeMessage dm) {
+		this.dm = dm;
 	}
 
 	@Override
