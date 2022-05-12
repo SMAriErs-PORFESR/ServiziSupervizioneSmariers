@@ -5,6 +5,9 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.alibaba.fastjson2.JSON;
 
 import cnr.isti.data.input.protocollo.Message;
@@ -12,6 +15,8 @@ import cnr.isti.data.input.protocollo.MessageDiretto;
 
 public class DecodeMessage {
 
+	private static Logger log = LogManager.getLogger(DecodeMessage.class);
+	
 	List<Message> listamessaggi = new ArrayList<>();
 	List<MessageDiretto> lmd = new ArrayList<>();
 
@@ -37,7 +42,7 @@ public class DecodeMessage {
 				if(r.length>10) {
 				MessageDiretto md = new MessageDiretto(r, date);
 				String jsonOutput= JSON.toJSONString(md);
-				System.out.println(jsonOutput);
+				log.info(jsonOutput);
 				lmd.add(md);
 				index += md.getLastindex()+1;
         	

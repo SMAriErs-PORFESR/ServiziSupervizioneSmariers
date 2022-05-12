@@ -6,11 +6,16 @@ import java.nio.ByteOrder;
 import java.nio.charset.StandardCharsets;
 
 import org.apache.commons.codec.binary.Hex;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import cnr.isti.data.input.protocollo.util.Service;
 
+
+
 public class Request {
 
+	private static Logger log = LogManager.getLogger(Request.class);
 	// REQUEST DATA
 
 	byte STX = 0x14;
@@ -160,7 +165,7 @@ public class Request {
 
 			byte[] finalmessage = finaloutputStream.toByteArray();
 
-			System.out.println(Hex.encodeHexString(finalmessage));
+			log.info(Hex.encodeHexString(finalmessage));
 
 			return finalmessage;
 

@@ -12,9 +12,14 @@ import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
 import java.util.Base64;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 //import javax.xml.bind.DatatypeConverter;
 
 public class Service {
+	
+	private static Logger log = LogManager.getLogger(Service.class);
 
 	public static void CRC(String message) {
 		int crc = 0xFFFF; // initial value

@@ -103,9 +103,9 @@ public class Reader {
 	private void readmsg(byte[] msg, Date d ) {
 
 		DecodeMessage dm = new DecodeMessage(msg, d);
-		System.out.println(dm);
-		byte[] range = Arrays.copyOfRange(msg, 2, msg.length);
-/*
+		log.info(dm);
+	/*	byte[] range = Arrays.copyOfRange(msg, 2, msg.length);
+
 		String ind = String.format("%02x", range[0]);
 		String cod = String.format("%02x", range[1]);
 		String dett1 = String.format("%02x", range[2]);
