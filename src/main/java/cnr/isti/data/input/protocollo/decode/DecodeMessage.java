@@ -20,7 +20,7 @@ public class DecodeMessage {
 	List<Message> listamessaggi = new ArrayList<>();
 	List<MessageDiretto> lmd = new ArrayList<>();
 
-	public DecodeMessage(byte[] msg, Date date) {
+	public DecodeMessage(byte[] msg, Date date, byte tag) {
 		byte[] range = Arrays.copyOfRange(msg, 2, msg.length);
 
 		int cicli = range.length / 11;
@@ -35,7 +35,7 @@ public class DecodeMessage {
 			}
 		}
 		
-		if (msg[0] == 0x74) {
+		if (msg[0] == 0x74 & tag == 0x41) {
 			int index = 0;
 			while (index<range.length) {
 				byte[] r = Arrays.copyOfRange(range, index  , range.length );

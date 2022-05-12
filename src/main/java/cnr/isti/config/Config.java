@@ -1,4 +1,4 @@
-package cnr.isti.mqtt.publisher;
+package cnr.isti.config;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -9,6 +9,51 @@ import java.util.Properties;
 public class Config {
 	
 	private static org.apache.logging.log4j.Logger log = org.apache.logging.log4j.LogManager.getLogger(Config.class);
+	
+	
+	public String getISO1Url() {
+		try (InputStream input = Config.class.getClassLoader().getResourceAsStream("config.properties")){
+
+		//try (InputStream input = new FileInputStream("path/to/config.properties")) {
+
+            Properties prop = new Properties();
+
+            // load a properties file
+            prop.load(input);
+
+            // get the property value and print it out
+            
+            log.trace(prop.getProperty("ISO1.url"));
+            return prop.getProperty("ISO1.url");
+           
+
+        } catch (IOException ex) {
+        	log.error(ex,ex);
+        }
+		return "spagnolo2.isti.cnr.it";
+	}
+	
+	public String getISO1Port() {
+		try (InputStream input = Config.class.getClassLoader().getResourceAsStream("config.properties")){
+
+		//try (InputStream input = new FileInputStream("path/to/config.properties")) {
+
+            Properties prop = new Properties();
+
+            // load a properties file
+            prop.load(input);
+
+            // get the property value and print it out
+            
+            log.trace(prop.getProperty("ISO1.port"));
+            return prop.getProperty("ISO1.port");
+           
+
+        } catch (IOException ex) {
+        	log.error(ex,ex);
+        }
+		return "9999";
+	}
 
 	
 	public String getMoqosquittoUrl() {

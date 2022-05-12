@@ -20,95 +20,84 @@ import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.eclipse.paho.client.mqttv3.MqttTopic;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 
-
-
-
-
+import cnr.isti.config.Config;
 
 public class Publisher {
-	
+
 	private static org.apache.logging.log4j.Logger log = org.apache.logging.log4j.LogManager.getLogger(Publisher.class);
 
-	
-	public void send(byte[] message, String key)  {
-		
+	public void send(byte[] message, String key) {
+
 		try {
 
-	   // String messageString = "Hello World from Java!";
-	    
-	   
-	    log.trace("== START PUBLISHER ==");
-	    
-	    Config config = new Config();
-		String serverUrl = config.getMoqosquittoUrl();
-		//String caFilePath = "/Users/spagnolo/github/stingray_ssl/combo2.pem";
-		String clientCrtFilePath = "/your_ssl/client.pem";
-		String clientKeyFilePath = "/your_ssl/client.key";
-		String mqttUserName = config.getMoqosquittoUser();
-		String mqttPassword = config.getMoqosquittoPass();
- 
-		MqttClient mqttClient = null;
-		try {
-			String publisherId = "Smariers_cloud_pub_"+UUID.randomUUID().toString();
+			// String messageString = "Hello World from Java!";
 
-			mqttClient = new MqttClient(serverUrl, publisherId, new MemoryPersistence());
-			MqttConnectOptions options = new MqttConnectOptions();
-			options.setUserName(mqttUserName);
-			options.setPassword(mqttPassword.toCharArray());
-			
-			options.setConnectionTimeout(80);
-			options.setKeepAliveInterval(80);
-			options.setMqttVersion(MqttConnectOptions.MQTT_VERSION_3_1_1);
+			log.trace("== START PUBLISHER ==");
 
-			
-		/*	SSLSocketFactory socketFactory = getSocketFactory(//caFilePath,
-					clientCrtFilePath, clientKeyFilePath, "");
-			options.setSocketFactory(socketFactory);*/
+			Config config = new Config();
+			String serverUrl = config.getMoqosquittoUrl();
+			// String caFilePath = "/Users/spagnolo/github/stingray_ssl/combo2.pem";
+			String clientCrtFilePath = "/your_ssl/client.pem";
+			String clientKeyFilePath = "/your_ssl/client.key";
+			String mqttUserName = config.getMoqosquittoUser();
+			String mqttPassword = config.getMoqosquittoPass();
 
-			log.trace("starting connect the server...");
-			mqttClient.connect(options);
-			log.trace("connected!");
-			
+			MqttClient mqttClient = null;
+			try {
+				String publisherId = "Smariers_cloud_pub_" + UUID.randomUUID().toString();
 
-			MqttMessage messagemqtt = new MqttMessage(message);
+				mqttClient = new MqttClient(serverUrl, publisherId, new MemoryPersistence());
+				MqttConnectOptions options = new MqttConnectOptions();
+				options.setUserName(mqttUserName);
+				options.setPassword(mqttPassword.toCharArray());
 
-			messagemqtt.setQos(1);     //sets qos level 1
-			messagemqtt.setRetained(true); //sets retained message 
+				options.setConnectionTimeout(80);
+				options.setKeepAliveInterval(80);
+				options.setMqttVersion(MqttConnectOptions.MQTT_VERSION_3_1_1);
 
-			MqttTopic topic2 = mqttClient.getTopic("SMARIERS_SUB_"+key);
+				/*
+				 * SSLSocketFactory socketFactory = getSocketFactory(//caFilePath,
+				 * clientCrtFilePath, clientKeyFilePath, "");
+				 * options.setSocketFactory(socketFactory);
+				 */
 
-			  
-			    topic2.publish(messagemqtt);   
-			    
-			
-			//Thread.sleep(1000);
-			mqttClient.disconnect();
-			log.trace("disconnected!");
+				log.trace("starting connect the server...");
+				mqttClient.connect(options);
+				log.trace("connected!");
 
+				MqttMessage messagemqtt = new MqttMessage(message);
 
-		} catch (MqttException e) {
-			log.error(e);
-			if(mqttClient!=null)
+				messagemqtt.setQos(1); // sets qos level 1
+				messagemqtt.setRetained(true); // sets retained message
+
+				MqttTopic topic2 = mqttClient.getTopic("SMARIERS_SUB_" + key);
+
+				topic2.publish(messagemqtt);
+
+				// Thread.sleep(1000);
 				mqttClient.disconnect();
-		}	
-		}catch (Exception e) {
+				log.trace("disconnected!");
+
+			} catch (MqttException e) {
+				log.error(e);
+				if (mqttClient != null)
+					mqttClient.disconnect();
+			}
+		} catch (Exception e) {
 			log.error(e);
 		}
 	}
 
-	
-
-	private static SSLSocketFactory getSocketFactory(//final String caCrtFile,
-			final String crtFile, final String keyFile, final String password)
-			throws Exception {
+	private static SSLSocketFactory getSocketFactory(// final String caCrtFile,
+			final String crtFile, final String keyFile, final String password) throws Exception {
 		Security.addProvider(new BouncyCastleProvider());
 
 		// load CA certificate
 		X509Certificate caCert = null;
-		
+
 		InputStream is2 = Publisher.class.getClassLoader().getResourceAsStream("combo2.pem");
 
-		//FileInputStream fis = new FileInputStream(caCrtFile);
+		// FileInputStream fis = new FileInputStream(caCrtFile);
 		BufferedInputStream bis = new BufferedInputStream(is2);
 		CertificateFactory cf = CertificateFactory.getInstance("X.509");
 
@@ -116,33 +105,24 @@ public class Publisher {
 			caCert = (X509Certificate) cf.generateCertificate(bis);
 			// log.trace(caCert.toString());
 		}
-/*
-		// load client certificate
-		bis = new BufferedInputStream(new FileInputStream(crtFile));
-		X509Certificate cert = null;
-		while (bis.available() > 0) {
-			cert = (X509Certificate) cf.generateCertificate(bis);
-			// log.trace(caCert.toString());
-		}
-
-		// load client private key
-		PEMParser pemParser = new PEMParser(new FileReader(keyFile));
-		Object object = pemParser.readObject();
-		PEMDecryptorProvider decProv = new JcePEMDecryptorProviderBuilder()
-				.build(password.toCharArray());
-		JcaPEMKeyConverter converter = new JcaPEMKeyConverter()
-				.setProvider("BC");
-		KeyPair key;
-		if (object instanceof PEMEncryptedKeyPair) {
-			log.trace("Encrypted key - we will use provided password");
-			key = converter.getKeyPair(((PEMEncryptedKeyPair) object)
-					.decryptKeyPair(decProv));
-		} else {
-			log.trace("Unencrypted key - no password needed");
-			key = converter.getKeyPair((PEMKeyPair) object);
-		}
-		pemParser.close();
-*/
+		/*
+		 * // load client certificate bis = new BufferedInputStream(new
+		 * FileInputStream(crtFile)); X509Certificate cert = null; while
+		 * (bis.available() > 0) { cert = (X509Certificate) cf.generateCertificate(bis);
+		 * // log.trace(caCert.toString()); }
+		 * 
+		 * // load client private key PEMParser pemParser = new PEMParser(new
+		 * FileReader(keyFile)); Object object = pemParser.readObject();
+		 * PEMDecryptorProvider decProv = new JcePEMDecryptorProviderBuilder()
+		 * .build(password.toCharArray()); JcaPEMKeyConverter converter = new
+		 * JcaPEMKeyConverter() .setProvider("BC"); KeyPair key; if (object instanceof
+		 * PEMEncryptedKeyPair) {
+		 * log.trace("Encrypted key - we will use provided password"); key =
+		 * converter.getKeyPair(((PEMEncryptedKeyPair) object)
+		 * .decryptKeyPair(decProv)); } else {
+		 * log.trace("Unencrypted key - no password needed"); key =
+		 * converter.getKeyPair((PEMKeyPair) object); } pemParser.close();
+		 */
 		// CA certificate is used to authenticate server
 		KeyStore caKs = KeyStore.getInstance(KeyStore.getDefaultType());
 		caKs.load(null, null);
@@ -152,28 +132,27 @@ public class Publisher {
 
 		// client key and certificates are sent to server so it can authenticate
 		// us
-		/*KeyStore ks = KeyStore.getInstance(KeyStore.getDefaultType());
-		ks.load(null, null);
-		ks.setCertificateEntry("certificate", cert);
-		ks.setKeyEntry("private-key", key.getPrivate(), password.toCharArray(),
-				new java.security.cert.Certificate[] { cert });*/
-		//KeyManagerFactory kmf = KeyManagerFactory.getInstance(KeyManagerFactory
-		//		.getDefaultAlgorithm());
-		//kmf.init(ks, password.toCharArray());
+		/*
+		 * KeyStore ks = KeyStore.getInstance(KeyStore.getDefaultType()); ks.load(null,
+		 * null); ks.setCertificateEntry("certificate", cert);
+		 * ks.setKeyEntry("private-key", key.getPrivate(), password.toCharArray(), new
+		 * java.security.cert.Certificate[] { cert });
+		 */
+		// KeyManagerFactory kmf = KeyManagerFactory.getInstance(KeyManagerFactory
+		// .getDefaultAlgorithm());
+		// kmf.init(ks, password.toCharArray());
 
 		// finally, create SSL socket factory
 		SSLContext context = SSLContext.getInstance("TLSv1.2");
-		//context.init(kmf.getKeyManagers(), tmf.getTrustManagers(), null);
+		// context.init(kmf.getKeyManagers(), tmf.getTrustManagers(), null);
 		context.init(null, tmf.getTrustManagers(), null);
 
 		return context.getSocketFactory();
 	}
 
-
-
-	public void send2(byte [] message, String key) {
-		byte [] messageByte = message;
-		send(messageByte,key);
+	public void send2(byte[] message, String key) {
+		byte[] messageByte = message;
+		send(messageByte, key);
 	}
 
 }
