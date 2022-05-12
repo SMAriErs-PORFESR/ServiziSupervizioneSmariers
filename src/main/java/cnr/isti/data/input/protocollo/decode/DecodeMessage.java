@@ -12,6 +12,7 @@ import com.alibaba.fastjson2.JSON;
 
 import cnr.isti.data.input.protocollo.Message;
 import cnr.isti.data.input.protocollo.MessageDiretto;
+import cnr.isti.data.input.protocollo.MessageLog;
 
 public class DecodeMessage {
 
@@ -19,20 +20,31 @@ public class DecodeMessage {
 
 	List<Message> listamessaggi = new ArrayList<>();
 	List<MessageDiretto> lmd = new ArrayList<>();
+	List<MessageLog> listmlog = new ArrayList<>();
 
 	public DecodeMessage(byte[] msg, Date date, byte tag) {
 		byte[] range = Arrays.copyOfRange(msg, 2, msg.length);
-
+		int cicli = range.length / 11;
+		int d = 0;
 		if (msg[0] == 0x0) {
 
-			int cicli = range.length / 11;
-			int d = 0;
+			
 
 			for (int i = 1; i <= cicli; i++) {
 				byte[] win = Arrays.copyOfRange(range, 11 * d, 11 * i);
 				Message e = new Message(win);
 				listamessaggi.add(e);
 				d++;
+			}
+		}
+		
+		if (msg[0] == 0x92) {
+			for (int i = 1; i <= cicli; i++) {
+				byte[] win = Arrays.copyOfRange(range, 11 * d, 11 * i);
+				MessageLog mlog = new MessageLog(win);
+				listmlog.add(mlog);
+				d++;
+
 			}
 		}
 
@@ -70,11 +82,21 @@ public class DecodeMessage {
 	public void setLmd(List<MessageDiretto> lmd) {
 		this.lmd = lmd;
 	}
+	
+
+	
+	public List<MessageLog> getListmlog() {
+		return listmlog;
+	}
+
+	public void setListmlog(List<MessageLog> listmlog) {
+		this.listmlog = listmlog;
+	}
 
 	@Override
 	public String toString() {
 		return (listamessaggi != null ? "listamessaggi: " + listamessaggi + ",  " : "")
-				+ (lmd != null ? "lmd: " + lmd : "");
+				+ (lmd != null ? "lmd: " + lmd + ",  " : "") + (listmlog != null ? "listmlog: " + listmlog : "");
 	}
 
 }
