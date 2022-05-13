@@ -26,7 +26,7 @@ public class Publisher {
 
 	private static org.apache.logging.log4j.Logger log = org.apache.logging.log4j.LogManager.getLogger(Publisher.class);
 
-	public void send(byte[] message, String key) {
+	public void send(byte[] message, String key, String Tag) {
 
 		try {
 
@@ -70,7 +70,7 @@ public class Publisher {
 				messagemqtt.setQos(1); // sets qos level 1
 				messagemqtt.setRetained(true); // sets retained message
 
-				MqttTopic topic2 = mqttClient.getTopic("SMARIERS_SUB_" + key);
+				MqttTopic topic2 = mqttClient.getTopic("SMARIERS_SUB_" + Tag+"_" + key);
 
 				topic2.publish(messagemqtt);
 
@@ -152,7 +152,7 @@ public class Publisher {
 
 	public void send2(byte[] message, String key) {
 		byte[] messageByte = message;
-		send(messageByte, key);
+		send(messageByte, key, "");
 	}
 
 }

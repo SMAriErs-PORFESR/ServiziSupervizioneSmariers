@@ -68,7 +68,7 @@ public class RequestTestOffline {
 			String jsonOutput= JSON.toJSONString(messageDiretto);
 			Publisher pub  = new Publisher();
 			
-			pub.send(jsonOutput.getBytes(), messageDiretto.getAddress());
+			pub.send(jsonOutput.getBytes(), messageDiretto.getAddress(), "RT");
 			
 		}
 		

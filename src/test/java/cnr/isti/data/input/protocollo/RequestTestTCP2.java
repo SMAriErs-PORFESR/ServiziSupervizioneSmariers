@@ -16,10 +16,12 @@ import org.junit.Test;
 import com.alibaba.fastjson2.JSON;
 
 import cnr.isti.data.input.protocollo.decode.DecodeMessage;
+import cnr.isti.data.input.protocollo.decode.EsitiScarico;
 import cnr.isti.data.input.protocollo.util.Service;
+import cnr.isti.data.input.sender.SenderTCP;
 import cnr.isti.mqtt.publisher.Publisher;
 
-public class RequestTestDiaOffline {
+public class RequestTestTCP2 {
 
 	@Test
 	public void test() throws DecoderException, UnknownHostException, IOException {
@@ -37,22 +39,24 @@ public class RequestTestDiaOffline {
 		Request s =  new Request();
 		byte b =  0x08;
 		byte b2 =  0x08;
-		byte[] finalmessage = s.getPresenzaDati(b2, b);
+		byte[] finalmessage ;//= s.getPresenzaDati(b2, b);
+		//System.out.println( Hex.encodeHexString( finalmessage ) );
+		//System.out.println(new String(finalmessage));
+		
+		finalmessage = s.get_T_REQ_Alarm(b, b);
 		System.out.println( Hex.encodeHexString( finalmessage ) );
 		System.out.println(new String(finalmessage));
 		
-		//finalmessage = s.get_T_REQ_Alarm(b, b);
-		System.out.println( Hex.encodeHexString( finalmessage ) );
-		System.out.println(new String(finalmessage));
-		
-		
-		byte[] decodee = Hex.decodeHex("1408f708f732940a0f2a05400000410100080f17");
+		SenderTCP sender = new SenderTCP();
+		byte[] baos = sender.Send(finalmessage);
+          //  System.out.println( Hex.encodeHexString(baos.toByteArray())); 
+            System.out.println(Hex.encodeHexString(baos));
             Reader read = new Reader();
-            read.Read(decodee);
+            read.Read(baos);
             
             DecodeMessage dm = read.getDm();
     		
-    		List<Message> lmess = dm.getListamessaggi();
+            List<Message> lmess = dm.getListamessaggi();
     		
     		for (Message messageDiretto : lmess) {
     			String jsonOutput= JSON.toJSONString(messageDiretto);
@@ -61,10 +65,6 @@ public class RequestTestDiaOffline {
     			pub.send(jsonOutput.getBytes(), messageDiretto.getInd(), "Presenza");
     			
     		}
-    		
-            
-            System.out.println("End");
-            
     }
 		
 	
