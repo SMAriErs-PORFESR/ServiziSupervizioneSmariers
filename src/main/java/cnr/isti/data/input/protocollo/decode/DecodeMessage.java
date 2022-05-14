@@ -9,6 +9,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.alibaba.fastjson2.JSON;
+import com.alibaba.fastjson2.annotation.JSONField;
 
 import cnr.isti.data.input.protocollo.Message;
 import cnr.isti.data.input.protocollo.MessageDiretto;
@@ -18,8 +19,11 @@ public class DecodeMessage {
 
 	private static Logger log = LogManager.getLogger(DecodeMessage.class);
 
+	@JSONField(name = "ListMessage")
 	List<Message> listamessaggi = new ArrayList<>();
+	@JSONField(name = "ListaRealtime")
 	List<MessageDiretto> lmd = new ArrayList<>();
+	@JSONField(name = "ListamLog")
 	List<MessageLog> listmlog = new ArrayList<>();
 
 	public DecodeMessage(byte[] msg, Date date, byte tag) {

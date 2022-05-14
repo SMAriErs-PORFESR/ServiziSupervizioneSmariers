@@ -20,6 +20,7 @@ import cnr.isti.data.input.protocollo.decode.EsitiScarico;
 import cnr.isti.data.input.protocollo.util.Service;
 import cnr.isti.data.input.sender.SenderTCP;
 import cnr.isti.mqtt.publisher.Publisher;
+import cnr.isti.mqtt.topic.Topic;
 
 public class RequestTestTCP2 {
 
@@ -58,13 +59,13 @@ public class RequestTestTCP2 {
     		
             List<Message> lmess = dm.getListamessaggi();
     		
-    		for (Message messageDiretto : lmess) {
-    			String jsonOutput= JSON.toJSONString(messageDiretto);
+    	//	for (Message messageDiretto : lmess) {
+    			String jsonOutput= JSON.toJSONString(lmess);
     			Publisher pub  = new Publisher();
     			
-    			pub.send(jsonOutput.getBytes(), messageDiretto.getInd(), "Presenza");
+    			pub.send(jsonOutput.getBytes(), "", Topic.PRESENZA_ALLARMI );
     			
-    		}
+    		//}
     }
 		
 	
