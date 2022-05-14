@@ -13,6 +13,7 @@ import com.alibaba.fastjson2.annotation.JSONField;
 
 import cnr.isti.data.input.protocollo.Message;
 import cnr.isti.data.input.protocollo.MessageDiretto;
+import cnr.isti.data.input.protocollo.MessageGroup;
 import cnr.isti.data.input.protocollo.MessageLog;
 
 public class DecodeMessage {
@@ -25,6 +26,8 @@ public class DecodeMessage {
 	List<MessageDiretto> lmd = new ArrayList<>();
 	@JSONField(name = "ListamLog")
 	List<MessageLog> listmlog = new ArrayList<>();
+	@JSONField(name = "ListamGroup")
+	List<MessageGroup> listmgroup = new ArrayList<>();
 
 	public DecodeMessage(byte[] msg, Date date, byte tag) {
 		byte[] range = Arrays.copyOfRange(msg, 2, msg.length);
@@ -39,6 +42,19 @@ public class DecodeMessage {
 				Message e = new Message(win);
 				listamessaggi.add(e);
 				d++;
+			}
+		}
+		
+		if(msg[0] == 0x80) {
+			int index = 0;
+			while (index < range.length) {
+				byte[] r = Arrays.copyOfRange(range, index, range.length);
+				if (r.length > 10) {
+					MessageGroup msggroup = new  MessageGroup (r);
+					listmgroup.add(msggroup);
+					index += msggroup.getLastindex() + 1;
+				} else
+					break;
 			}
 		}
 		
@@ -58,8 +74,8 @@ public class DecodeMessage {
 				byte[] r = Arrays.copyOfRange(range, index, range.length);
 				if (r.length > 10) {
 					MessageDiretto md = new MessageDiretto(r, date);
-					String jsonOutput = JSON.toJSONString(md);
-					log.info(jsonOutput);
+					//String jsonOutput = JSON.toJSONString(md);
+					//log.info(jsonOutput);
 					lmd.add(md);
 					index += md.getLastindex() + 1;
 
