@@ -70,8 +70,8 @@ public class Publisher {
 
 				messagemqtt.setQos(1); // sets qos level 1
 				messagemqtt.setRetained(true); // sets retained message
-				log.info("Topic: " + Tag.getTopic()+"_" + key);
-				MqttTopic topic2 = mqttClient.getTopic( Tag.getTopic()+"_" + key);
+				log.info("Topic: " + Tag.getTopic() + key);
+				MqttTopic topic2 = mqttClient.getTopic( Tag.getTopic() + key);
 
 				topic2.publish(messagemqtt);
 

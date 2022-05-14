@@ -65,13 +65,18 @@ public class RequestTestOffline {
 		
 		List<MessageDiretto> lmdiretto = dm.getLmd();
 		
-		for (MessageDiretto messageDiretto : lmdiretto) {
+		String jsonOutput= JSON.toJSONString(lmdiretto);
+		Publisher pub  = new Publisher();
+		
+		pub.send(jsonOutput.getBytes(), "", Topic.REAL_TIME);
+		
+		/*for (MessageDiretto messageDiretto : lmdiretto) {
 			String jsonOutput= JSON.toJSONString(messageDiretto);
 			Publisher pub  = new Publisher();
 			
-			pub.send(jsonOutput.getBytes(), messageDiretto.getAddress(), Topic.REAL_TIME);
+			pub.send(jsonOutput.getBytes(), "_"+messageDiretto.getAddress(), Topic.REAL_TIME);
 			
-		}
+		}/*
 		
 		System.out.println("End");
 		/*

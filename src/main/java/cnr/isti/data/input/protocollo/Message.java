@@ -22,7 +22,7 @@ public class Message {
 	String dett4;
 	@JSONField(name="Data")
 	long data;
-	@JSONField(name="millisencod")
+	@JSONField(name="millisecond")
 	int cent;
 
 	public Message(byte[] range) {

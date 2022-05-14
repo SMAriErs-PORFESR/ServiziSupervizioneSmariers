@@ -42,7 +42,7 @@ public class MessageDiretto {
 	private Date date;
 	@JSONField(name="Ora", format="HH:mm:ss" , ordinal = 3)
 	private Date ora;
-	@JSONField(name="millisencod")
+	@JSONField(name="millisecond")
 	private long millisencod;
 
 	public MessageDiretto(byte[] range, Date date) {
