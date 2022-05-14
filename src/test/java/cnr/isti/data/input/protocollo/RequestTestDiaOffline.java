@@ -50,7 +50,7 @@ public class RequestTestDiaOffline {
             Reader read = new Reader();
             read.Read(decodee);
             
-            DecodeMessage dm = read.getDm();
+        /*    DecodeMessage dm = read.getDm();
     		
     		List<Message> lmess = dm.getListamessaggi();
     		
@@ -60,7 +60,7 @@ public class RequestTestDiaOffline {
     			
     			pub.send(jsonOutput.getBytes(), messageDiretto.getInd(), "Presenza");
     			
-    		}
+    		}*/
     		
             
             System.out.println("End");

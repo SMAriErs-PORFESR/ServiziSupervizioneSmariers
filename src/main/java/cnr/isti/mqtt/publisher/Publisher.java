@@ -32,7 +32,7 @@ public class Publisher {
 
 			// String messageString = "Hello World from Java!";
 
-			log.trace("== START PUBLISHER ==");
+			log.info("== START PUBLISHER ==");
 
 			Config config = new Config();
 			String serverUrl = config.getMoqosquittoUrl();
@@ -61,9 +61,9 @@ public class Publisher {
 				 * options.setSocketFactory(socketFactory);
 				 */
 
-				log.trace("starting connect the server...");
+				log.info("starting connect the server...");
 				mqttClient.connect(options);
-				log.trace("connected!");
+				log.info("connected!");
 
 				MqttMessage messagemqtt = new MqttMessage(message);
 
@@ -76,7 +76,7 @@ public class Publisher {
 
 				// Thread.sleep(1000);
 				mqttClient.disconnect();
-				log.trace("disconnected!");
+				log.info("disconnected!");
 
 			} catch (MqttException e) {
 				log.error(e);

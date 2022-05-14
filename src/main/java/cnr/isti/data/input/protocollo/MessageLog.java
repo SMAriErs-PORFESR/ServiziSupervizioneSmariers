@@ -15,7 +15,7 @@ public class MessageLog {
 	DecodificaAnalogica idcanale;
 	@JSONField(name = "Valore")
 	String valore;
-	@JSONField(name = "DataEcm")
+	@JSONField(name = "Data")
 	long data;
 	@JSONField(name = "centesimi")
 	int cent;

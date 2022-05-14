@@ -12,15 +12,15 @@ public class Message {
 	String ind;
 	@JSONField(name = "CodiceEvento")
 	String cod;
-	@JSONField(name = "Dett.evento1")
+	@JSONField(name = "Dettevento1")
 	String dett1;
-	@JSONField(name = "Dett.evento2")
+	@JSONField(name = "Dettevento2")
 	String dett2;
-	@JSONField(name = "Dett.evento3")
+	@JSONField(name = "Dettevento3")
 	String dett3;
-	@JSONField(name = "Dett.evento4")
+	@JSONField(name = "Dettevento4")
 	String dett4;
-	@JSONField(name="DataECM")
+	@JSONField(name="Data")
 	long data;
 	@JSONField(name="millisencod")
 	int cent;
