@@ -76,6 +76,63 @@ public class DecodificaDiagnostica {
 				+ PRESENZALOG + ",  ATTIVITA: " + ATTIVITA + ",  ERRORECOM: "
 				+ ERRORECOM+" "+System.lineSeparator();
 	}
+
+	public int getALLARMECRITICO() {
+		return ALLARMECRITICO;
+	}
+
+	public void setALLARMECRITICO(int aLLARMECRITICO) {
+		ALLARMECRITICO = aLLARMECRITICO;
+	}
+
+	public int getPRESENZAEVENTI() {
+		return PRESENZAEVENTI;
+	}
+
+	public void setPRESENZAEVENTI(int pRESENZAEVENTI) {
+		PRESENZAEVENTI = pRESENZAEVENTI;
+	}
+
+	public int getPRESENZAALLARMI() {
+		return PRESENZAALLARMI;
+	}
+
+	public void setPRESENZAALLARMI(int pRESENZAALLARMI) {
+		PRESENZAALLARMI = pRESENZAALLARMI;
+	}
+
+	public int getPRESENZAWARNING() {
+		return PRESENZAWARNING;
+	}
+
+	public void setPRESENZAWARNING(int pRESENZAWARNING) {
+		PRESENZAWARNING = pRESENZAWARNING;
+	}
+
+	public int getPRESENZALOG() {
+		return PRESENZALOG;
+	}
+
+	public void setPRESENZALOG(int pRESENZALOG) {
+		PRESENZALOG = pRESENZALOG;
+	}
+
+	public int getATTIVITA() {
+		return ATTIVITA;
+	}
+
+	public void setATTIVITA(int aTTIVITA) {
+		ATTIVITA = aTTIVITA;
+	}
+
+	public int getERRORECOM() {
+		return ERRORECOM;
+	}
+
+	public void setERRORECOM(int eRRORECOM) {
+		ERRORECOM = eRRORECOM;
+	}
+	
 	
 	
 	

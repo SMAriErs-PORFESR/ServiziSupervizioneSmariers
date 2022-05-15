@@ -56,7 +56,7 @@ public class ThreadSendRealTime implements Runnable {
 				 byte[] lmdiretto = read.getDm().getMap();
 
 				Publisher pub = new Publisher();
-				if (lmdiretto.length>0)
+				if (lmdiretto.length>10)
 					pub.send(lmdiretto, "", Topic.REAL_TIME);
 
 				log.info("CicloRealTimeEnd");

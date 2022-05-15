@@ -5,7 +5,7 @@ import com.alibaba.fastjson2.annotation.JSONField;
 public class Triple<T, V, Z> {
 	@JSONField(name = "Descrizione")
 	private T t;
-	@JSONField(name = "Valore")
+	@JSONField(name = "Stato")
 	private V v;
 	@JSONField(name = "Index")
 	private Z z;

@@ -21,11 +21,12 @@ public class DecodificaDigitalInputs {
 		for (Integer i : diginputs) {
 			for (int d = 1; d <= 8; d++) {
 				int result = Service.bitExtracted(i, 1, d);
-				if (result == 0) {
+				Inputs.add(new Triple( TableDigitalInput.getDesc(k) ,result, k));
+				/*if (result == 0) {
 					Inputs.add(new Triple( TableDigitalInput.getDesc(k) ,new Boolean(false), k));
 				} else {
 					Inputs.add(new Triple( TableDigitalInput.getDesc(k) ,new Boolean(true),k ));
-				}
+				}*/
 				
 				k++;
 			}

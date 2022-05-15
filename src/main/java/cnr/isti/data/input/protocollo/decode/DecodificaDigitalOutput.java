@@ -19,11 +19,14 @@ public class DecodificaDigitalOutput {
 		for (Integer i : diginputs) {
 			for (int d = 1; d <= 8; d++) {
 				int result = Service.bitExtracted(i, 1, d);
+				Outputs.add(new Triple( TableDigitalOutput.getDesc(k),result,k));
+/*
 				if (result == 0) {
 					Outputs.add(new Triple( TableDigitalOutput.getDesc(k),new Boolean(false),k));
 				} else {
 					Outputs.add(new Triple( TableDigitalOutput.getDesc(k),new Boolean(true),k));
 				}
+				*/
 				k++;
 			}
 			
