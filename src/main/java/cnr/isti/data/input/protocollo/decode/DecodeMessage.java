@@ -15,6 +15,7 @@ import cnr.isti.data.input.protocollo.MessageWAD;
 import cnr.isti.data.input.protocollo.MessageDiretto;
 import cnr.isti.data.input.protocollo.MessageGroup;
 import cnr.isti.data.input.protocollo.MessageLog;
+import cnr.isti.data.input.protocollo.MessagePresenza;
 
 public class DecodeMessage {
 
@@ -29,12 +30,18 @@ public class DecodeMessage {
 	@JSONField(name = "ListamGroup")
 	List<MessageGroup> listmgroup = new ArrayList<>();
 
-	public DecodeMessage(byte[] msg, Date date, byte tag) {
+	public DecodeMessage(byte[] msg, Date date, byte tag, String add, String addper) {
 		byte[] range = Arrays.copyOfRange(msg, 2, msg.length);
 		int cicli = range.length / 11;
 		int d = 0;
+		//Presenza
+		if (msg[0] == 0x0 & tag<=0x32) {
+			MessagePresenza msp = new MessagePresenza(range, date, add,addper);
+			log.info(msp);
+		}
+		
 		//T_REQ_WARNING, T_REQ_ALARM, T_REQ_DATA
-		if (msg[0] == 0x0) {
+		if (msg[0] == 0x0 & tag>0x32) {
 
 			for (int i = 1; i <= cicli; i++) {
 				byte[] win = Arrays.copyOfRange(range, 11 * d, 11 * i);

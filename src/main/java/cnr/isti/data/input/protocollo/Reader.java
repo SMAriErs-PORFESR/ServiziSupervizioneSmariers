@@ -72,8 +72,8 @@ public class Reader {
 
 		byte[] msg = Arrays.copyOfRange(message, 12, fine);// 2 + LEN Max 2033
 
-		if (msg.length > 10) {
-			this.readmsg(msg,Service.getDateTime(TIME_INFO),(message[5]) );
+		if (msg.length > 4) {
+			this.readmsg(msg,Service.getDateTime(TIME_INFO),(message[5]) , ADD_CD, ADD_PER);
 		}
 
 		String hex = Hex.encodeHexString(msg);
@@ -102,9 +102,9 @@ public class Reader {
 
 	}
 
-	private void readmsg(byte[] msg, Date d , byte tag) {
+	private void readmsg(byte[] msg, Date d , byte tag, String add, String addper) {
 
-		dm = new DecodeMessage(msg, d, tag);
+		dm = new DecodeMessage(msg, d, tag, add, addper);
 		log.info(dm);
 	/*	byte[] range = Arrays.copyOfRange(msg, 2, msg.length);
 
