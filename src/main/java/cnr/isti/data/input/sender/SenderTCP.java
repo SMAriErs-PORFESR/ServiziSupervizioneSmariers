@@ -6,6 +6,7 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.Socket;
+import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
 
 import org.apache.commons.codec.binary.Hex;
@@ -39,7 +40,9 @@ public class SenderTCP {
 	public byte[] Send(byte[] message) {
 
 		try (Socket socket = new Socket(hostname, port)) {
+			socket.setSoTimeout(2000);
 
+			log.info("Client Opened");
 			DataOutputStream os = new DataOutputStream(new BufferedOutputStream(socket.getOutputStream()));
 
 			os.write(message);
@@ -69,11 +72,13 @@ public class SenderTCP {
 			
 		} catch (UnknownHostException ex) {
 
-			System.out.println("Server not found: " + ex.getMessage());
+			log.info("Server not found: " + ex.getMessage());
 
-		} catch (IOException ex) {
+		} catch (SocketTimeoutException ex) {
 
-			System.out.println("I/O error: " + ex.getMessage());
+			log.info("Timeout error: " + ex.getMessage());
+		} catch (IOException e) {
+			log.info("I/O error: " + e.getMessage());
 		}
 		
 		return new byte[1]; 

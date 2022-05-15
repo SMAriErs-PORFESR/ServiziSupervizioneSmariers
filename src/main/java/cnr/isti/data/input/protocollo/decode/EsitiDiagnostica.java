@@ -1,4 +1,4 @@
-package cnr.isti.data.input.protocollo.decode;
+/*package cnr.isti.data.input.protocollo.decode;
 
 public enum EsitiDiagnostica {
 	ALLARMECRITICO(1) {
@@ -114,3 +114,4 @@ public enum EsitiDiagnostica {
 	}
 
 }
+*/

@@ -169,7 +169,7 @@ public class Config {
 
             // get the property value and print it out
             
-            log.trace(prop.getProperty("AddressCD"));
+            log.info(prop.getProperty("AddressCD"));
             
            String p = prop.getProperty("AddressCD");
            String [] listcd  =  p.split(",");

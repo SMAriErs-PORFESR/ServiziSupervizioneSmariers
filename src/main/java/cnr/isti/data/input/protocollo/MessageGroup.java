@@ -28,7 +28,7 @@ public class MessageGroup {
 		Address = String.format("%02x", range[0]);
 		byte[] bitdiagnostica = Arrays.copyOfRange(range, 1, 5);
 		diagnostica= new DecodificaDiagnostica(bitdiagnostica);
-		numgroup =  range[6];
+		numgroup =  range[5];
 		for(int i =1 ; i<numgroup; i++) {
 			groups.add(new Integer(range[i+6]));
 			

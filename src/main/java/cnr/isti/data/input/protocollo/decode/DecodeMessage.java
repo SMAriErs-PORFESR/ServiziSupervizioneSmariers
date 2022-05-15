@@ -29,6 +29,10 @@ public class DecodeMessage {
 	List<MessageLog> listmlog = new ArrayList<>();
 	@JSONField(name = "ListamGroup")
 	List<MessageGroup> listmgroup = new ArrayList<>();
+	
+	public DecodeMessage() {
+		
+	}
 
 	public DecodeMessage(byte[] msg, Date date, byte tag, String add, String addper) {
 		byte[] range = Arrays.copyOfRange(msg, 2, msg.length);
@@ -51,7 +55,7 @@ public class DecodeMessage {
 			}
 		}
 		//T_REQ_GROUP_STD 
-		if(msg[0] == 0x80) {
+		if(msg[0] == -0x80) {
 			int index = 0;
 			while (index < range.length) {
 				byte[] r = Arrays.copyOfRange(range, index, range.length);
@@ -122,7 +126,10 @@ public class DecodeMessage {
 	@Override
 	public String toString() {
 		return (listamessaggi != null ? "listamessaggi: " + listamessaggi + ",  " : "")
-				+ (lmd != null ? "lmd: " + lmd + ",  " : "") + (listmlog != null ? "listmlog: " + listmlog : "");
+				+ (lmd != null ? "lmd: " + lmd + ",  " : "") + (listmlog != null ? "listmlog: " + listmlog + ",  " : "")
+				+ (listmgroup != null ? "listmgroup: " + listmgroup : "");
 	}
+
+	
 
 }

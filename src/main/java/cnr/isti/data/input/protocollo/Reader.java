@@ -14,7 +14,7 @@ import cnr.isti.data.input.protocollo.util.Service;
 
 public class Reader {
 	
-	DecodeMessage dm ;
+	DecodeMessage dm  = new DecodeMessage();
 
 	private static Logger log = LogManager.getLogger(Reader.class);
 
@@ -43,6 +43,7 @@ public class Reader {
 	String ETX; // 1 0x17 fine messaggio
 
 	public void Read(byte[] message) throws IOException {
+		if(message.length>20) {
 		STX = String.format("%02x", (message[0]));// 1
 		ADD_CD = String.format("%02x", (message[1]));// 1
 		ADD_CD_NEG = String.format("%02x", (message[2]));// 1
@@ -99,6 +100,7 @@ public class Reader {
 		log.info(CRC_Calcolato);
 
 		byte fnl = message[2 + LEN + 4]; // 1
+		}
 
 	}
 
