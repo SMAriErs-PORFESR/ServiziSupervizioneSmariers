@@ -21,7 +21,7 @@ public class ThreadSendRealTime implements Runnable {
 
 	private byte Address = 0;
 	private byte AddressPeriferica = 0;
-	
+
 	private boolean ciclo = true;
 
 	private int ritardo = 10000;
@@ -52,19 +52,17 @@ public class ThreadSendRealTime implements Runnable {
 				log.info(Hex.encodeHexString(baos));
 				Reader read = new Reader();
 				read.Read(baos);
-				
-				List<MessageDiretto> lmdiretto = read.getDm().getLmd();
-				
-				String jsonOutput= JSON.toJSONString(lmdiretto);
-				Publisher pub  = new Publisher();
-				
-				pub.send(jsonOutput.getBytes(), "", Topic.REAL_TIME);
-				
+
+				 byte[] lmdiretto = read.getDm().getMap();
+
+				Publisher pub = new Publisher();
+				if (lmdiretto.length>0)
+					pub.send(lmdiretto, "", Topic.REAL_TIME);
+
 				log.info("CicloRealTimeEnd");
 				Thread.sleep(ritardo);
 
-				
-			}while (ciclo);
+			} while (ciclo);
 
 		} catch (Exception e) {
 			log.error(e.getLocalizedMessage());
@@ -73,7 +71,7 @@ public class ThreadSendRealTime implements Runnable {
 	}
 
 	public void setFinite() {
-		
+
 		ciclo = false;
 	}
 

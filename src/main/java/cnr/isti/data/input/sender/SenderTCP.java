@@ -38,6 +38,8 @@ public class SenderTCP {
 	}
 
 	public byte[] Send(byte[] message) {
+		
+		log.info("Client Started");
 
 		try (Socket socket = new Socket(hostname, port)) {
 			socket.setSoTimeout(2000);

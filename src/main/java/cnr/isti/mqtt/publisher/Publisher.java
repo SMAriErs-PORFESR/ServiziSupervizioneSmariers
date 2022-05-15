@@ -6,6 +6,9 @@ import java.security.KeyStore;
 import java.security.Security;
 import java.security.cert.CertificateFactory;
 import java.security.cert.X509Certificate;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.net.ssl.SSLContext;
@@ -20,12 +23,37 @@ import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.eclipse.paho.client.mqttv3.MqttTopic;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 
+import com.alibaba.fastjson2.JSON;
+
 import cnr.isti.config.Config;
+import cnr.isti.data.input.protocollo.MessageDiretto;
 import cnr.isti.mqtt.topic.Topic;
 
 public class Publisher {
 
 	private static org.apache.logging.log4j.Logger log = org.apache.logging.log4j.LogManager.getLogger(Publisher.class);
+	
+	
+	private byte[] message = {0};
+	
+	public Publisher() {
+		
+	}
+
+	public Publisher(List<MessageDiretto> lmdiretto) {
+		Map<String,MessageDiretto> lmpd = new HashMap<>();
+		for (MessageDiretto messageDiretto : lmdiretto) {
+			//String jsonOutput= JSON.toJSONString(messageDiretto);
+			String key = messageDiretto.getAddress();
+			lmpd.put(key, messageDiretto);
+		}
+		String jsonOutput= JSON.toJSONString(lmpd);
+		message = jsonOutput.getBytes();
+	}
+	
+	public void send(  String key, Topic Tag) {
+		this.send(message, key,Tag);
+	}
 
 	public void send(byte[] message, String key, Topic Tag) {
 
