@@ -5,9 +5,7 @@ import java.util.Date;
 
 import com.alibaba.fastjson2.annotation.JSONField;
 
-import cnr.isti.data.input.protocollo.decode.DecodificaAnalogica;
 import cnr.isti.data.input.protocollo.decode.DecodificaPresenze;
-import cnr.isti.data.input.protocollo.util.Service;
 
 public class MessagePresenza {
 
