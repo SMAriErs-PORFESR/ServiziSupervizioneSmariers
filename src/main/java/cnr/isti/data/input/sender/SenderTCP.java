@@ -43,6 +43,8 @@ public class SenderTCP {
 			socket.setSoTimeout(2000);
 
 			log.info("Client Opened");
+			log.info("Send: ");
+			log.info(Hex.encodeHexString(message));
 			DataOutputStream os = new DataOutputStream(new BufferedOutputStream(socket.getOutputStream()));
 
 			os.write(message);
@@ -67,6 +69,7 @@ public class SenderTCP {
 
 			socket.close();
 			log.info("Client Closed");
+			log.info("Received: ");
 			log.info(Hex.encodeHexString(baos.toByteArray()));
 			return baos.toByteArray();
 			
