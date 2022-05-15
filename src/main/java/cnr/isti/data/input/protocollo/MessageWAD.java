@@ -6,7 +6,7 @@ import com.alibaba.fastjson2.annotation.JSONField;
 
 import cnr.isti.data.input.protocollo.util.Service;
 
-public class Message {
+public class MessageWAD {
 
 	@JSONField(name = "Address")
 	String ind;
@@ -25,7 +25,7 @@ public class Message {
 	@JSONField(name="millisecond")
 	int cent;
 
-	public Message(byte[] range) {
+	public MessageWAD(byte[] range) {
 
 		ind = String.format("%02x", range[0]);
 		cod = String.format("%02x", range[1]);

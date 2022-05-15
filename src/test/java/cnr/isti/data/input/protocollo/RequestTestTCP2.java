@@ -57,7 +57,7 @@ public class RequestTestTCP2 {
             
             DecodeMessage dm = read.getDm();
     		
-            List<Message> lmess = dm.getListamessaggi();
+            List<MessageWAD> lmess = dm.getListamessaggi();
     		
     	//	for (Message messageDiretto : lmess) {
     			String jsonOutput= JSON.toJSONString(lmess);
