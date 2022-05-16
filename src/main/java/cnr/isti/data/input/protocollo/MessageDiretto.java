@@ -11,6 +11,7 @@ import cnr.isti.data.input.protocollo.decode.DecodificaAnalogica;
 import cnr.isti.data.input.protocollo.decode.DecodificaDiagnostica;
 import cnr.isti.data.input.protocollo.decode.DecodificaDigitalInputs;
 import cnr.isti.data.input.protocollo.decode.DecodificaDigitalOutput;
+import cnr.isti.data.input.protocollo.decode.DecodificaTDiagnostica;
 
 
 public class MessageDiretto {
@@ -19,6 +20,9 @@ public class MessageDiretto {
 	String Address;
 	@JSONField(name = "Diagnostica")
 	DecodificaDiagnostica diagnostica;
+	
+	@JSONField(name = "DDiagnostica")
+	DecodificaTDiagnostica Tdiagnostica;
 	
 	@JSONField(name = "NumDigiInput")
 	int diginput;
@@ -52,6 +56,8 @@ public class MessageDiretto {
 		byte[] bitdiagnostica = Arrays.copyOfRange(range, 1, 5);
 		
 		diagnostica= new DecodificaDiagnostica(bitdiagnostica);
+		
+		Tdiagnostica= new DecodificaTDiagnostica(bitdiagnostica);
 		
 		diginput =  range[5]*8;
 		analog = range[6];
@@ -99,6 +105,22 @@ public class MessageDiretto {
 
 
 	
+
+
+
+
+
+	public DecodificaTDiagnostica getTdiagnostica() {
+		return Tdiagnostica;
+	}
+
+
+
+
+
+	public void setTdiagnostica(DecodificaTDiagnostica tdiagnostica) {
+		Tdiagnostica = tdiagnostica;
+	}
 
 
 

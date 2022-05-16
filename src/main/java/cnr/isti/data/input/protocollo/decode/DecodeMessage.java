@@ -84,7 +84,9 @@ public class DecodeMessage {
 			int index = 0;
 			while (index < range.length) {
 				byte[] r = Arrays.copyOfRange(range, index, range.length);
-				if (r.length > 10) {
+				String Address = String.format("%02x", r[0]);
+				if (r.length > 10 & !Address.contains("00")) {
+					
 					MessageDiretto md = new MessageDiretto(r, date);
 					// String jsonOutput = JSON.toJSONString(md);
 					// log.info(jsonOutput);

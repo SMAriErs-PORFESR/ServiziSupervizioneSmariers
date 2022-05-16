@@ -12,7 +12,7 @@ public class DecodificaDigitalOutput {
 	
 	
 	@JSONField(name = "Outputs")
-	List<Triple<String, Boolean, Integer>>  Outputs = new ArrayList<Triple<String, Boolean, Integer>>();
+	List<Triple<String, Integer, Integer>>  Outputs = new ArrayList<Triple<String, Integer, Integer>>();
 
 	public DecodificaDigitalOutput(List<Integer> diginputs) {
 		int  k = 1;
@@ -36,18 +36,18 @@ public class DecodificaDigitalOutput {
 	@Override
 	public String toString() {
 		String stringa = "[";
-		for (Triple<String, Boolean, Integer> triple : Outputs) {
+		for (Triple<String, Integer, Integer> triple : Outputs) {
 			
 			stringa+=  ""+triple.getT()+","+triple.getV()+","+triple.getZ()+System.lineSeparator();
 		}
 		return stringa+"]";
 	}
 
-	public List<Triple<String, Boolean, Integer>> getOutputs() {
+	public List<Triple<String, Integer, Integer>> getOutputs() {
 		return Outputs;
 	}
 
-	public void setOutputs(List<Triple<String, Boolean, Integer>> outputs) {
+	public void setOutputs(List<Triple<String, Integer, Integer>> outputs) {
 		Outputs = outputs;
 	}
 
