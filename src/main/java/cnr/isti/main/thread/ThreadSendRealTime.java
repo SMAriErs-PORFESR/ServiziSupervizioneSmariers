@@ -11,6 +11,7 @@ import com.alibaba.fastjson2.JSON;
 import cnr.isti.data.input.protocollo.MessageDiretto;
 import cnr.isti.data.input.protocollo.Reader;
 import cnr.isti.data.input.protocollo.Request;
+import cnr.isti.data.input.protocollo.decode.DecodeMessage;
 import cnr.isti.data.input.sender.SenderTCP;
 import cnr.isti.mqtt.publisher.Publisher;
 import cnr.isti.mqtt.topic.Topic;
@@ -52,13 +53,23 @@ public class ThreadSendRealTime implements Runnable {
 				log.info(Hex.encodeHexString(baos));
 				Reader read = new Reader();
 				read.Read(baos);
+				DecodeMessage dm = read.getDm();
+				List<MessageDiretto> lmdiretto = dm.getLmd();
+				
+				for (MessageDiretto messageDiretto : lmdiretto) {
+					String jsonOutput= JSON.toJSONString(messageDiretto);
+					Publisher pub  = new Publisher();
+					
+					pub.send(jsonOutput.getBytes(), "/"+messageDiretto.getAddress(), Topic.REAL_TIME);
+					
+				}
 
-				 byte[] lmdiretto = read.getDm().getMap();
+				/* byte[] lmdiretto = read.getDm().getMap();
 
 				Publisher pub = new Publisher();
 				if (lmdiretto.length>10)
 					pub.send(lmdiretto, "", Topic.REAL_TIME);
-
+				 */
 				log.info("CicloRealTimeEnd");
 				Thread.sleep(ritardo);
 

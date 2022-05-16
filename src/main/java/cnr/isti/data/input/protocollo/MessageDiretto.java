@@ -38,16 +38,15 @@ public class MessageDiretto {
 	@JSONField(name = "DigiOutput")
 	DecodificaDigitalOutput DigiOutput;
 	
-	@JSONField(name="Data", format="dd/MM/yyyy" , ordinal = 2)
+	@JSONField(name="Data", format="dd/MM/yyyy HH:mm:ss" , ordinal = 2)
 	private Date date;
-	@JSONField(name="Ora", format="HH:mm:ss" , ordinal = 3)
-	private Date ora;
+
 	@JSONField(name="millisecond")
 	private long millisencod;
 
 	public MessageDiretto(byte[] range, Date date) {
 		this.date=date;
-		this.ora=date;
+
 		this.millisencod=date.getTime();
 		Address = String.format("%02x", range[0]);
 		byte[] bitdiagnostica = Arrays.copyOfRange(range, 1, 5);
@@ -99,17 +98,7 @@ public class MessageDiretto {
 
 
 
-	public Date getOra() {
-		return ora;
-	}
-
-
-
-
-
-	public void setOra(Date ora) {
-		this.ora = ora;
-	}
+	
 
 
 
