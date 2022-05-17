@@ -87,7 +87,7 @@ public class Request {
 	public byte[] get_T_REQ_DATALOG1(byte Address, byte AddressPeriferica) {
 
 		byte tag = 0x39;
-		char[] msg = new char[] { 0x92, 0x0 };
+		char[] msg = new char[] { 0x92, 0x00 };
 		return getDati(Address, AddressPeriferica, tag, new String(msg).getBytes(StandardCharsets.UTF_8));
 	}
 
