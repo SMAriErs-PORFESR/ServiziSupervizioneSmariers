@@ -43,7 +43,7 @@ public class Reader {
 	String ETX; // 1 0x17 fine messaggio
 
 	public void Read(byte[] message) throws IOException {
-		if(message.length>20) {
+		if(message.length>15) {
 		STX = String.format("%02x", (message[0]));// 1
 		ADD_CD = String.format("%02x", (message[1]));// 1
 		ADD_CD_NEG = String.format("%02x", (message[2]));// 1
@@ -67,7 +67,7 @@ public class Reader {
 		//byte [] v1 =  {(byte) lowNibble, message[10], 0, 0 };
 		LEN = Service.TwobytesToint(v) ;
 
-		IDSERIAL = lowNibble;
+		IDSERIAL = highNibble;
 
 		int fine = 12 + LEN;
 
