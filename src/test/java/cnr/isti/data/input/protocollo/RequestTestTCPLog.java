@@ -41,20 +41,20 @@ public class RequestTestTCPLog {
 		List<byte[]> l = new ArrayList<byte[]>();
 		
 		Request s =  new Request();
-		byte b =  0x08;
-		byte b2 =  0x08;
-		
-		byte[] finalmessage = s.get_T_REQ_GROUP_STD(b, b);
+		byte b =  0x05;
+		byte b2 =  0x05;
+	
+		byte[] finalmessage = s.get_T_REQ_GROUP_STD(b, b2);
 		l.add(finalmessage);
 		System.out.println( Hex.encodeHexString( finalmessage ) );
 		System.out.println(new String(finalmessage));
-		
-		finalmessage = s.get_T_REQ_DATALOG1(b, b);
+	/*	
+		byte[] */ finalmessage = s.get_T_REQ_DATALOG1(b, b2);
 		l.add(finalmessage);
 		System.out.println( Hex.encodeHexString( finalmessage ) );
 		System.out.println(new String(finalmessage));
-/*	*/
-		
+	
+			
 		for (byte [] c : l) {
 			
 			SenderTCP sender = new SenderTCP();
