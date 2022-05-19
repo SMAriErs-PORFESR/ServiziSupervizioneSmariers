@@ -87,15 +87,15 @@ public class Request {
 	public byte[] get_T_REQ_DATALOG1(byte Address, byte AddressPeriferica) {
 
 		byte tag = 0x39;
-		char[] msg = new char[] { 0x92, 0x00 };
-		return getDati(Address, AddressPeriferica, tag, new String(msg).getBytes(StandardCharsets.UTF_8));
+		byte[] msg = new byte[] {(byte) 0x92, 0x00 };
+		return getDati(Address, AddressPeriferica, tag, msg);
 	}
 
 	public byte[] get_T_CRL_FRAMELOG1(byte Address, byte AddressPeriferica) {
 
 		byte tag = 0x43;
-		char[] msg = new char[] { 0x93, 0x00 };
-		return getDati(Address, AddressPeriferica, tag, new String(msg).getBytes(StandardCharsets.UTF_8));
+		byte[] msg = new byte[] {(byte) 0x93, 0x00 };
+		return getDati(Address, AddressPeriferica, tag, msg);
 	}
 	
 	public byte[] get_T_REQ_GROUP_STD(byte Address, byte AddressPeriferica) {
@@ -130,7 +130,7 @@ public class Request {
 
 		TIME_INFO = Service.longToByte(TIME);// new byte[] {0x0,0x0,0x0,0x0} ;//
 		
-		len[0] = (byte) msg.length;
+		//len[0] = (byte) msg.length;
 
 		MSG = msg;
 
