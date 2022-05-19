@@ -9,7 +9,7 @@ public enum TableDiagnostica {
 	POLICY5(5,"Presenza warning da scaricare"),
 	POLICY6(6,"Modulo in modalità TEST"),
 	POLICY7(7,"Presenza tensione comandi"),
-	POLICY8(8,"Attività"),
+	POLICY8(8,"Attivit�"),
 	POLICY9(9,"Errore diagnostica ingressi digitali"),
 	POLICY10(10,"Presenza eventi da scaricare"),
 	POLICY11(11,"Presenza allarmi da scaricare"),

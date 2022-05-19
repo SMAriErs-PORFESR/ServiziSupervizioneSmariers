@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 import com.alibaba.fastjson2.annotation.JSONField;
 
+import cnr.isti.data.input.protocollo.decode.TableCodiceEventi;
 import cnr.isti.data.input.protocollo.util.Service;
 
 public class MessageWAD {
@@ -12,6 +13,10 @@ public class MessageWAD {
 	String ind;
 	@JSONField(name = "CodiceEvento")
 	String cod;
+	@JSONField(name = "DescrizioneEvento")
+	String descrizione;
+	@JSONField(name = "TipoEvento")
+	String tipo;
 	@JSONField(name = "Dettevento1")
 	String dett1;
 	@JSONField(name = "Dettevento2")
@@ -34,12 +39,42 @@ public class MessageWAD {
 		dett3 = String.format("%02x", range[4]);
 		dett4 = String.format("%02x", range[5]);
 		data = Service.bytesToLong(Arrays.copyOfRange(range, 6, 10));
-
+		descrizione = TableCodiceEventi.getDesc(Integer.decode("0x"+cod));
+		tipo  = TableCodiceEventi.getTipo(Integer.decode("0x"+cod));
 		cent = range[10];
 
 	}
 	
 	
+	
+
+	public String getTipo() {
+		return tipo;
+	}
+
+
+
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
+
+
+
+	public String getDescrizione() {
+		return descrizione;
+	}
+
+
+
+
+	public void setDescrizione(String descrizione) {
+		this.descrizione = descrizione;
+	}
+
+
+
 
 	public String getInd() {
 		return ind;
