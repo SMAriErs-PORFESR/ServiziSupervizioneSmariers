@@ -130,7 +130,7 @@ public class Request {
 
 		TIME_INFO = Service.longToByte(TIME);// new byte[] {0x0,0x0,0x0,0x0} ;//
 		
-		//len[0] = (byte) msg.length;
+		len[0] = (byte) msg.length;
 
 		MSG = msg;
 

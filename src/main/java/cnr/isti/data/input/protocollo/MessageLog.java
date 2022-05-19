@@ -1,6 +1,7 @@
 package cnr.isti.data.input.protocollo;
 
 import java.util.Arrays;
+import java.util.Date;
 
 import com.alibaba.fastjson2.annotation.JSONField;
 
@@ -16,7 +17,7 @@ public class MessageLog {
 	@JSONField(name = "Valore")
 	String valore;
 	@JSONField(name = "Data")
-	long data;
+	Date data;
 	@JSONField(name = "centesimi")
 	int cent;
 
@@ -30,17 +31,31 @@ public class MessageLog {
 		idcanale = new DecodificaAnalogica(cod);
 
 		byte[] Time = Arrays.copyOfRange(range, 6, 10);// 4
-		data = Service.bytesToLong(Time);
+		data = Service.getDateTime( Service.bytesToLong(Time));
 		// Service.getTime(TIME_INFO);
 		cent = range[10];
 
 	}
 
-	public String getData() {
-		return Service.getTime(data);
+	
+	
+	
+
+	public Date getData() {
+		return data;
 	}
-	
-	
+
+
+
+
+
+	public void setData(Date data) {
+		this.data = data;
+	}
+
+
+
+
 
 	public String getInd() {
 		return ind;
@@ -74,9 +89,7 @@ public class MessageLog {
 		this.cent = cent;
 	}
 
-	public void setData(long data) {
-		this.data = data;
-	}
+	
 
 	@Override
 	public String toString() {

@@ -70,7 +70,7 @@ public class DecodeMessage {
 			}
 		}
 		// T_REQ_DATA_LOG1
-		if (msg[0] == 0x92) {
+		if (msg[0] == -0x6e) {
 			for (int i = 1; i <= cicli; i++) {
 				byte[] win = Arrays.copyOfRange(range, 11 * d, 11 * i);
 				MessageLog mlog = new MessageLog(win);
