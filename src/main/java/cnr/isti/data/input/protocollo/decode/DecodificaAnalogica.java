@@ -14,19 +14,23 @@ public class DecodificaAnalogica {
 	private static Logger log = LogManager.getLogger(DecodificaAnalogica.class);
 	
 	@JSONField(name = "Tipo")
-	int tipo;
+	int tipo = 0;
 	@JSONField(name = "Canale")
-	int canale;
+	int canale = 0;
 	@JSONField(name = "Segno")
-	int segno;
+	int segno = 0;
 	@JSONField(name = "Valore")
-	long valore;
+	long valore = 0;
 	@JSONField(name = "Descrizione")
-	String descrizione;
+	String descrizione = "";
 	@JSONField(name = "Precision")
-	double precision;
+	double precision = 0;
 	@JSONField(name = "Misura")
-	String misura;
+	String misura= "";
+	
+	public DecodificaAnalogica() {
+		
+	}
 	
 	public DecodificaAnalogica(byte[] msg) {
 		byte spacca = msg[0];
