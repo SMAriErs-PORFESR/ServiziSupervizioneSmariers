@@ -49,6 +49,7 @@ public class MessageDiretto {
 	private long millisencod;
 
 	public MessageDiretto(byte[] range, Date date) {
+		analogs.add(new DecodificaAnalogica());
 		this.date=date;
 
 		this.millisencod=date.getTime();
