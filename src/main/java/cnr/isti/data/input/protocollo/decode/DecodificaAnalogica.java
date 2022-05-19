@@ -2,8 +2,7 @@ package cnr.isti.data.input.protocollo.decode;
 
 import java.util.Arrays;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
 
 import com.alibaba.fastjson2.annotation.JSONField;
 
@@ -11,7 +10,7 @@ import cnr.isti.data.input.protocollo.util.Service;
 
 public class DecodificaAnalogica {
 	
-	private static Logger log = LogManager.getLogger(DecodificaAnalogica.class);
+	//private static org.apache.logging.log4j.Logger log = org.apache.logging.log4j.LogManager.getLogger(DecodificaAnalogica.class);
 	
 	@JSONField(name = "Tipo")
 	int tipo = 0;

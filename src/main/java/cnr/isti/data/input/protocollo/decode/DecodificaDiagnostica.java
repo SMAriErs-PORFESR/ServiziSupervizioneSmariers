@@ -1,12 +1,6 @@
 package cnr.isti.data.input.protocollo.decode;
 
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.nio.IntBuffer;
-import java.util.Arrays;
-
 import cnr.isti.data.input.protocollo.util.Service;
-import org.apache.commons.codec.binary.Hex;
 
 public class DecodificaDiagnostica {
 	

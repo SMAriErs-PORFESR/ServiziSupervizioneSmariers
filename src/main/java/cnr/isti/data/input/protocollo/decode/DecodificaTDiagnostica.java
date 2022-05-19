@@ -1,9 +1,7 @@
 package cnr.isti.data.input.protocollo.decode;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import com.alibaba.fastjson2.annotation.JSONField;
 
@@ -21,7 +19,7 @@ public class DecodificaTDiagnostica {
 		for (int i = 0; i < diginputs.length; i++) {
 			for (int d = 1; d <= 8; d++) {
 				int result = Service.bitExtracted(diginputs[i], 1, d);
-				Diagnostica.add(new Triple( TableDiagnostica.getDesc(k) ,result,k));
+				Diagnostica.add(new Triple<String, Integer, Integer>( TableDiagnostica.getDesc(k) ,result,k));
 				/*if (result == 0) {
 					Inputs.add(new Triple( TableDigitalInput.getDesc(k) ,new Boolean(false), k));
 				} else {

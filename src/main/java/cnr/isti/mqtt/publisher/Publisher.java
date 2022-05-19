@@ -66,8 +66,8 @@ public class Publisher {
 			Config config = new Config();
 			String serverUrl = config.getMoqosquittoUrl();
 			// String caFilePath = "/Users/spagnolo/github/stingray_ssl/combo2.pem";
-			String clientCrtFilePath = "/your_ssl/client.pem";
-			String clientKeyFilePath = "/your_ssl/client.key";
+			//String clientCrtFilePath = "/your_ssl/client.pem";
+			//String clientKeyFilePath = "/your_ssl/client.key";
 			String mqttUserName = config.getMoqosquittoUser();
 			String mqttPassword = config.getMoqosquittoPass();
 

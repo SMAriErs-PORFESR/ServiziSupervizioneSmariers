@@ -17,7 +17,6 @@ import org.junit.Test;
 import com.alibaba.fastjson2.JSON;
 
 import cnr.isti.data.input.protocollo.decode.DecodeMessage;
-import cnr.isti.data.input.protocollo.decode.EsitiScarico;
 import cnr.isti.data.input.protocollo.util.Service;
 import cnr.isti.data.input.sender.SenderTCP;
 import cnr.isti.mqtt.publisher.Publisher;

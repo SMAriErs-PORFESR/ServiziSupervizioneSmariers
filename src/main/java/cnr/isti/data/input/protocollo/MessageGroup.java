@@ -7,7 +7,6 @@ import java.util.List;
 import com.alibaba.fastjson2.annotation.JSONField;
 
 import cnr.isti.data.input.protocollo.decode.DecodificaDiagnostica;
-import cnr.isti.data.input.protocollo.util.Service;
 
 public class MessageGroup {
 

@@ -13,7 +13,6 @@ import org.apache.commons.codec.binary.Hex;
 import org.junit.Test;
 
 import cnr.isti.config.Config;
-import cnr.isti.data.input.protocollo.decode.EsitiScarico;
 import cnr.isti.data.input.protocollo.util.Service;
 import cnr.isti.main.thread.ThreadSendRealTime;
 

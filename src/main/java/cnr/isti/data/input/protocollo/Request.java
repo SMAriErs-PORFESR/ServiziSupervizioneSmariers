@@ -1,9 +1,7 @@
 package cnr.isti.data.input.protocollo;
 
 import java.io.ByteArrayOutputStream;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.nio.charset.StandardCharsets;
+
 
 import org.apache.commons.codec.binary.Hex;
 import org.apache.logging.log4j.LogManager;

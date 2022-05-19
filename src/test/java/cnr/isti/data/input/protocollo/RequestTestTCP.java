@@ -22,7 +22,6 @@ import org.apache.commons.codec.DecoderException;
 import org.apache.commons.codec.binary.Hex;
 import org.junit.Test;
 
-import cnr.isti.data.input.protocollo.decode.EsitiScarico;
 import cnr.isti.data.input.protocollo.util.Service;
 import cnr.isti.data.input.sender.SenderTCP;
 
@@ -61,9 +60,9 @@ public class RequestTestTCP {
             
             System.out.println(read);
 
-            EsitiScarico es =EsitiScarico.getEsitiScarico(4264193)  ;
+          
            
-           boolean d = es.isAllarmi();
+           
            System.out.println("End");
           /*   */
  

@@ -5,11 +5,9 @@ import java.util.Arrays;
 import java.util.Date;
 
 import org.apache.logging.log4j.Logger;
-import org.apache.commons.codec.binary.Hex;
 import org.apache.logging.log4j.LogManager;
 
 import cnr.isti.data.input.protocollo.decode.DecodeMessage;
-import cnr.isti.data.input.protocollo.decode.EsitiScarico;
 import cnr.isti.data.input.protocollo.util.Service;
 
 public class Reader {
@@ -55,7 +53,7 @@ public class Reader {
 		TIME_INFO = Service.bytesToLong(Time);
 		Service.getTime(TIME_INFO);
 
-		int len1 = message[10] & 0xff;// 1
+		//int len1 = message[10] & 0xff;// 1
 
 		byte len2 = message[11];// 1
 
@@ -77,12 +75,7 @@ public class Reader {
 			this.readmsg(msg,Service.getDateTime(TIME_INFO),(message[5]) , ADD_CD, ADD_PER);
 		}
 
-		String hex = Hex.encodeHexString(msg);
-		if (hex.length() < 5) {
-			int esito = Integer.parseInt(hex, 16);
-
-			EsitiScarico es = EsitiScarico.getEsitiScarico(esito);
-		}
+		
 		int last = fine + 2;
 
 		byte[] crc = Arrays.copyOfRange(message, fine, last);// 2
@@ -99,7 +92,7 @@ public class Reader {
 
 		log.info(CRC_Calcolato);
 
-		byte fnl = message[2 + LEN + 4]; // 1
+	//	byte fnl = message[2 + LEN + 4]; // 1
 		}
 
 	}
