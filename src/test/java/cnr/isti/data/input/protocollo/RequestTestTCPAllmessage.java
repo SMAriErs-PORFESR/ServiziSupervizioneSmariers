@@ -38,71 +38,71 @@ public class RequestTestTCPAllmessage {
 		System.out.println( Hex.encodeHexString( recCRC ) );
 		//byte[] recCRC2 = Service.integerToTwoBytes(Calc_CRC);
 		
-		List<byte[]> l = new ArrayList<byte[]>();
+		
 		
 		Request s =  new Request();
 		byte b =  0x08;
 		byte b2 =  0x08;
 		byte[] finalmessage = s.getPresenzaDati(b2, b);
-		l.add(finalmessage);
+		send(finalmessage, Topic.PRESENZA_DATI);
 		System.out.println( Hex.encodeHexString( finalmessage ) );
 		System.out.println(new String(finalmessage));
-	/*	
+		
 		finalmessage = s.get_T_REQ_GROUP_STD(b, b);
-		l.add(finalmessage);
+		send(finalmessage, Topic.GROUP);
 		System.out.println( Hex.encodeHexString( finalmessage ) );
 		System.out.println(new String(finalmessage));
 		
 		finalmessage = s.get_T_REQ_DATALOG1(b, b);
-		l.add(finalmessage);
+		send(finalmessage, Topic.LOG);
 		System.out.println( Hex.encodeHexString( finalmessage ) );
 		System.out.println(new String(finalmessage));
-	*/	
+		
 		
 		finalmessage = s.get_T_REQ_Warning(b, b);
-		l.add(finalmessage);
+		send(finalmessage, Topic.PRESENZA_WARNING);
 		System.out.println( Hex.encodeHexString( finalmessage ) );
 		System.out.println(new String(finalmessage));
 		
 		finalmessage = s.get_T_REQ_Data(b, b);
-		l.add(finalmessage);
+		send(finalmessage, Topic.PRESENZA_EVENTI);
 		System.out.println( Hex.encodeHexString( finalmessage ) );
 		System.out.println(new String(finalmessage));
 		
 		
 		finalmessage = s.get_T_REQ_Alarm(b, b);
-		l.add(finalmessage);
+		send(finalmessage, Topic.PRESENZA_ALLARMI);
 		System.out.println( Hex.encodeHexString( finalmessage ) );
 		System.out.println(new String(finalmessage));
 		
-		for (byte [] c : l) {
-			
-			SenderTCP sender = new SenderTCP();
-			byte[] baos = sender.Send(c);
-	          //  System.out.println( Hex.encodeHexString(baos.toByteArray())); 
-	            System.out.println(Hex.encodeHexString(baos));
-	            Reader read = new Reader();
-	            read.Read(baos);
-	            
-	            DecodeMessage dm = read.getDm();
-	    		
-	            //List<Message> lmess = dm.getListamessaggi();
-	    		
-	    	//	for (Message messageDiretto : lmess) {
-	    			String jsonOutput= JSON.toJSONString(dm);
-	    			
-	    			System.out.println( jsonOutput);
-	    		//	Publisher pub  = new Publisher();
-	    			
-	    		//	pub.send(jsonOutput.getBytes(), "", Topic.PRESENZA_ALLARMI );
-			
-		}
+		
 		
 		
     			
     		//}
     }
 		
+	
+	private void send(byte[] c, Topic d) throws IOException {
+		SenderTCP sender = new SenderTCP();
+		byte[] baos = sender.Send(c);
+          //  System.out.println( Hex.encodeHexString(baos.toByteArray())); 
+            System.out.println(Hex.encodeHexString(baos));
+            Reader read = new Reader();
+            read.Read(baos);
+            
+            DecodeMessage dm = read.getDm();
+    		Object g =  dm.getObject(d);
+            //List<Message> lmess = dm.getListamessaggi();
+    		
+    	//	for (Message messageDiretto : lmess) {
+    			String jsonOutput= JSON.toJSONString(g);
+    			
+    			System.out.println( jsonOutput);
+    			Publisher pub  = new Publisher();
+    			
+    			pub.send(jsonOutput.getBytes(), "", d );
+	}
 	
 
 }

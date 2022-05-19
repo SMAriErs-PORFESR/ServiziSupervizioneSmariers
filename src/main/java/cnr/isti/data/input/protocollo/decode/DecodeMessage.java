@@ -14,6 +14,7 @@ import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.annotation.JSONField;
 
 import cnr.isti.data.input.protocollo.MessageWAD;
+import cnr.isti.mqtt.topic.Topic;
 import cnr.isti.data.input.protocollo.MessageDiretto;
 import cnr.isti.data.input.protocollo.MessageGroup;
 import cnr.isti.data.input.protocollo.MessageLog;
@@ -31,7 +32,8 @@ public class DecodeMessage {
 	List<MessageLog> listmlog = new ArrayList<>();
 	@JSONField(name = "ListamGroup")
 	List<MessageGroup> listmgroup = new ArrayList<>();
-
+	@JSONField(name = "Presenza")
+	MessagePresenza msp;
 	public DecodeMessage() {
 
 	}
@@ -42,7 +44,7 @@ public class DecodeMessage {
 		int d = 0;
 		// Presenza
 		if (msg[0] == 0x0 & tag <= 0x32) {
-			MessagePresenza msp = new MessagePresenza(range, date, add, addper);
+			msp = new MessagePresenza(range, date, add, addper);
 			log.info(msp);
 		}
 
@@ -143,6 +145,18 @@ public class DecodeMessage {
 		return (listamessaggi != null ? "listamessaggi: " + listamessaggi + ",  " : "")
 				+ (lmd != null ? "lmd: " + lmd + ",  " : "") + (listmlog != null ? "listmlog: " + listmlog + ",  " : "")
 				+ (listmgroup != null ? "listmgroup: " + listmgroup : "");
+	}
+
+	public Object getObject(Topic d) {
+		switch (d) {
+		case LOG:{return listmlog;}
+		case GROUP:{return listmgroup;}
+		case REAL_TIME:{return lmd;}
+		case PRESENZA_DATI: {return msp;}
+		default:
+			return listamessaggi;
+		}
+		
 	}
 
 }

@@ -10,9 +10,9 @@ import cnr.isti.data.input.protocollo.decode.DecodificaPresenze;
 public class MessagePresenza {
 
 	@JSONField(name = "Address")
-	String ind;
+	String Address;
 	@JSONField(name = "AddreddPeriferica")
-	String addper;
+	String AddreddPeriferica;
 	@JSONField(name = "DecodificaPresenze")
 	DecodificaPresenze decodificaPresenze;
 	@JSONField(name = "Data")
@@ -23,48 +23,69 @@ public class MessagePresenza {
 	 * 
 	 */
 	public MessagePresenza(byte[] range, Date data, String ind , String addper) {
-		this.ind = String.format("%02x", range[0]);
+		this.Address = String.format("%02x", range[0]);
 		byte[] cod = Arrays.copyOfRange(range, 1, 6);
 
 		decodificaPresenze = new DecodificaPresenze(cod);
 
 		this.data= data;
 		//this.ind= ind;
-		this.addper=addper;
+		this.AddreddPeriferica=addper;
 		// Service.getTime(TIME_INFO);
 		
 
 	}
 
 
-	public String getInd() {
-		return ind;
+	
+
+
+	public String getAddress() {
+		return Address;
 	}
 
 
-	public void setInd(String ind) {
-		this.ind = ind;
+
+
+
+	public void setAddress(String address) {
+		Address = address;
 	}
 
 
-	public String getAddcd() {
-		return addper;
+
+
+
+	public String getAddreddPeriferica() {
+		return AddreddPeriferica;
 	}
 
 
-	public void setAddcd(String addcd) {
-		this.addper = addcd;
+
+
+
+	public void setAddreddPeriferica(String addreddPeriferica) {
+		AddreddPeriferica = addreddPeriferica;
 	}
 
 
-	public DecodificaPresenze getDecodificaPpresenze() {
+
+
+
+	public DecodificaPresenze getDecodificaPresenze() {
 		return decodificaPresenze;
 	}
 
 
-	public void setDecodificaPresenze(DecodificaPresenze decodificaPpresenze) {
-		this.decodificaPresenze = decodificaPpresenze;
+
+
+
+	public void setDecodificaPresenze(DecodificaPresenze decodificaPresenze) {
+		this.decodificaPresenze = decodificaPresenze;
 	}
+
+
+
 
 
 	public Date getData() {
@@ -72,14 +93,20 @@ public class MessagePresenza {
 	}
 
 
+
+
+
 	public void setData(Date data) {
 		this.data = data;
 	}
 
 
+
+
+
 	@Override
 	public String toString() {
-		return (ind != null ? "ind: " + ind + ",  " : "") + (addper != null ? "addper: " + addper + ",  " : "")
+		return (Address != null ? "ind: " + Address + ",  " : "") + (AddreddPeriferica != null ? "addper: " + AddreddPeriferica + ",  " : "")
 				+ (decodificaPresenze != null ? "decodificaPresenze: " + decodificaPresenze + ",  " : "")
 				+ (data != null ? "data: " + data : "");
 	}
