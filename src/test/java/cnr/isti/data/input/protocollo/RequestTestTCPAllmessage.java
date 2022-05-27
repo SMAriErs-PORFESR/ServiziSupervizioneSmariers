@@ -42,6 +42,12 @@ public class RequestTestTCPAllmessage {
 		Request s =  new Request();
 		byte b =  0x08;
 		byte b2 =  0x08;
+		byte[] finalmessage = s.get_T_REQ_STATUS_ANALOG(b2, b);
+
+		send(finalmessage, Topic.REG_VALORE);
+		System.out.println( Hex.encodeHexString( finalmessage ) );
+		System.out.println(new String(finalmessage));
+		/*
 		byte[] finalmessage = s.getPresenzaDati(b2, b);
 		send(finalmessage, Topic.PRESENZA_DATI);
 		System.out.println( Hex.encodeHexString( finalmessage ) );
@@ -74,7 +80,7 @@ public class RequestTestTCPAllmessage {
 		System.out.println( Hex.encodeHexString( finalmessage ) );
 		System.out.println(new String(finalmessage));
 		
-		
+		*/
 		
 		
     			
@@ -95,12 +101,12 @@ public class RequestTestTCPAllmessage {
             //List<Message> lmess = dm.getListamessaggi();
     		
     	//	for (Message messageDiretto : lmess) {
-    			String jsonOutput= JSON.toJSONString(g);
+    		String jsonOutput= JSON.toJSONString(g);
     			
     			System.out.println( jsonOutput);
     			Publisher pub  = new Publisher();
     			
-    			pub.send(jsonOutput.getBytes(), "", d );
+    			pub.send(jsonOutput.getBytes(), "", d );/*	*/
 	}
 	
 

@@ -19,6 +19,7 @@ import cnr.isti.data.input.protocollo.MessageDiretto;
 import cnr.isti.data.input.protocollo.MessageGroup;
 import cnr.isti.data.input.protocollo.MessageLog;
 import cnr.isti.data.input.protocollo.MessagePresenza;
+import cnr.isti.data.input.protocollo.MessageRegAnalogica;
 
 public class DecodeMessage {
 
@@ -34,6 +35,8 @@ public class DecodeMessage {
 	List<MessageGroup> listmgroup = new ArrayList<>();
 	@JSONField(name = "Presenza")
 	MessagePresenza msp;
+	@JSONField(name = "MessageRegAnalogica")
+	MessageRegAnalogica mes;
 	public DecodeMessage() {
 
 	}
@@ -100,6 +103,12 @@ public class DecodeMessage {
 			}
 
 		}
+		// REQ_STATUS_ANALOG
+				if (msg[0] == -0x7D & msg[1] == 0x2C & tag == 0x41) {
+					 mes = new MessageRegAnalogica(range, date);
+					log.info(mes);
+				}
+		
 
 	}
 
@@ -146,6 +155,32 @@ public class DecodeMessage {
 				+ (lmd != null ? "lmd: " + lmd + ",  " : "") + (listmlog != null ? "listmlog: " + listmlog + ",  " : "")
 				+ (listmgroup != null ? "listmgroup: " + listmgroup : "");
 	}
+	
+	
+
+	public List<MessageGroup> getListmgroup() {
+		return listmgroup;
+	}
+
+	public void setListmgroup(List<MessageGroup> listmgroup) {
+		this.listmgroup = listmgroup;
+	}
+
+	public MessagePresenza getMsp() {
+		return msp;
+	}
+
+	public void setMsp(MessagePresenza msp) {
+		this.msp = msp;
+	}
+
+	public MessageRegAnalogica getMes() {
+		return mes;
+	}
+
+	public void setMes(MessageRegAnalogica mes) {
+		this.mes = mes;
+	}
 
 	public Object getObject(Topic d) {
 		switch (d) {
@@ -153,6 +188,7 @@ public class DecodeMessage {
 		case GROUP:{return listmgroup;}
 		case REAL_TIME:{return lmd;}
 		case PRESENZA_DATI: {return msp;}
+		case REG_VALORE: {return mes;}
 		default:
 			return listamessaggi;
 		}

@@ -109,6 +109,13 @@ public class Request {
 		byte[] msg = new byte[] {(byte) 0x74, 0x00, (byte)0xff,0x00 };
 		return getDati(Address, AddressPeriferica, tag, msg);
 	}
+	
+	public byte[] get_T_REQ_STATUS_ANALOG(byte Address, byte AddressPeriferica) {
+
+		byte tag = 0x39;
+		byte[] msg = new byte[] {(byte) 0x83, 0x2c, (byte)0xff,0x00 };
+		return getDati(Address, AddressPeriferica, tag, msg);
+	}
 
 	private byte[] getDati(byte Address, byte AddressPeriferica, byte tag, byte[] msg) {
 
@@ -168,7 +175,7 @@ public class Request {
 			return finalmessage;
 
 		} catch (Exception e) {
-			// TODO: handle exception
+			log.error(e.getLocalizedMessage());
 
 			return null;
 		}
