@@ -21,7 +21,7 @@ public class MessageRegAnalogica {
 	@JSONField(name = "DecodificaRegValoreCanaleAnalogica")
 	private List<DecodificaRegValoreCanaleAnalogica> listdec = new  ArrayList<DecodificaRegValoreCanaleAnalogica>();
 	
-	
+	int index = 2;
 	
 	public MessageRegAnalogica(byte[] range, Date date) {
 		this.date=date;
@@ -30,12 +30,20 @@ public class MessageRegAnalogica {
 		Address = String.format("%02x", range[0]);
 		analog = range[1];
 		int d = 1;
-		for(int i=2; (i<range.length & i<analog); i++) {
+		for(int i=2; (i<range.length & i<analog/2); i++) {
 			DecodificaRegValoreCanaleAnalogica dec = new DecodificaRegValoreCanaleAnalogica(range[i],d);
 			d = d +1;
 			listdec.add(dec);
+			
 		}
+		index = (analog/2) +2;
 		
+	}
+
+	
+
+	public int getLastIndex() {
+		return index;
 	}
 
 

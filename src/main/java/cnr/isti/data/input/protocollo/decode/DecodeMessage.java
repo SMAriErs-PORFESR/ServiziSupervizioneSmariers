@@ -35,8 +35,9 @@ public class DecodeMessage {
 	List<MessageGroup> listmgroup = new ArrayList<>();
 	@JSONField(name = "Presenza")
 	MessagePresenza msp;
-	@JSONField(name = "MessageRegAnalogica")
-	MessageRegAnalogica mes;
+	@JSONField(name = "ListMessageRegAnalogica")
+	List<MessageRegAnalogica> listmes = new ArrayList<>() ;
+
 	public DecodeMessage() {
 
 	}
@@ -89,9 +90,9 @@ public class DecodeMessage {
 			int index = 0;
 			while (index < range.length) {
 				byte[] r = Arrays.copyOfRange(range, index, range.length);
-				//String Address = String.format("%02x", r[0]);
-				if (r.length > 10/* & !Address.contains("00")*/) {
-					
+				// String Address = String.format("%02x", r[0]);
+				if (r.length > 10/* & !Address.contains("00") */) {
+
 					MessageDiretto md = new MessageDiretto(r, date);
 					// String jsonOutput = JSON.toJSONString(md);
 					// log.info(jsonOutput);
@@ -104,11 +105,16 @@ public class DecodeMessage {
 
 		}
 		// REQ_STATUS_ANALOG
-				if (msg[0] == -0x7D & msg[1] == 0x2C & tag == 0x41) {
-					 mes = new MessageRegAnalogica(range, date);
-					log.info(mes);
-				}
-		
+		if (msg[0] == -0x7D & msg[1] == 0x2C & tag == 0x41) {
+			int index = 0;
+			while (index < range.length) {
+				byte[] r = Arrays.copyOfRange(range, index, range.length);
+				MessageRegAnalogica mes = new MessageRegAnalogica(r, date);
+				index += mes.getLastIndex() + 1;
+				log.info(mes);
+				listmes.add(mes);
+			}
+		}
 
 	}
 
@@ -155,8 +161,6 @@ public class DecodeMessage {
 				+ (lmd != null ? "lmd: " + lmd + ",  " : "") + (listmlog != null ? "listmlog: " + listmlog + ",  " : "")
 				+ (listmgroup != null ? "listmgroup: " + listmgroup : "");
 	}
-	
-	
 
 	public List<MessageGroup> getListmgroup() {
 		return listmgroup;
@@ -174,25 +178,37 @@ public class DecodeMessage {
 		this.msp = msp;
 	}
 
-	public MessageRegAnalogica getMes() {
-		return mes;
+	
+
+	public List<MessageRegAnalogica> getListmes() {
+		return listmes;
 	}
 
-	public void setMes(MessageRegAnalogica mes) {
-		this.mes = mes;
+	public void setListmes(List<MessageRegAnalogica> listmes) {
+		this.listmes = listmes;
 	}
 
 	public Object getObject(Topic d) {
 		switch (d) {
-		case LOG:{return listmlog;}
-		case GROUP:{return listmgroup;}
-		case REAL_TIME:{return lmd;}
-		case PRESENZA_DATI: {return msp;}
-		case REG_VALORE: {return mes;}
+		case LOG: {
+			return listmlog;
+		}
+		case GROUP: {
+			return listmgroup;
+		}
+		case REAL_TIME: {
+			return lmd;
+		}
+		case PRESENZA_DATI: {
+			return msp;
+		}
+		case REG_VALORE: {
+			return listmes;
+		}
 		default:
 			return listamessaggi;
 		}
-		
+
 	}
 
 }
