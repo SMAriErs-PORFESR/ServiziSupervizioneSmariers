@@ -30,9 +30,9 @@ public class MessageRegAnalogica {
 		Address = String.format("%02x", range[0]);
 		analog = range[1];
 		int d = 1;
-		for(int i=2; (i<range.length & i<analog/2); i++) {
-			DecodificaRegValoreCanaleAnalogica dec = new DecodificaRegValoreCanaleAnalogica(range[i],d);
-			d = d +1;
+		for(int i=0;  i<=(analog/2); i++) {
+			DecodificaRegValoreCanaleAnalogica dec = new DecodificaRegValoreCanaleAnalogica(range[i+2],d);
+			d = d +2;
 			listdec.add(dec);
 			
 		}
