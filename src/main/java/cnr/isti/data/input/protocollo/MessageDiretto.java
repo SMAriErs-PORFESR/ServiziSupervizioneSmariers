@@ -58,7 +58,7 @@ public class MessageDiretto {
 		
 		diagnostica= new DecodificaDiagnostica(bitdiagnostica);
 		
-		Tdiagnostica= new DecodificaTDiagnostica(bitdiagnostica);
+		Tdiagnostica= new DecodificaTDiagnostica(bitdiagnostica, range[0]);
 		
 		diginput =  range[5]*8;
 		analog = range[6];
