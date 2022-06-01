@@ -23,6 +23,11 @@ public class Pair<T, V> {
 		return v;
 	}
 
+	@Override
+	public String toString() {
+		return (t != null ? t + ", " : "") + (v != null ? v : "");
+	}
+
 
 	
 
