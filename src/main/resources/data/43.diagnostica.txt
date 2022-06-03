@@ -19,7 +19,7 @@
 19=Errore orologio interno o RTC
 20=Presenza tensione batteria interna
 21=Errore buffer eventi\allarmi\warning\log
-22=Errore diagnostica uscita digitali
+22=Errore diagnostica uscite digitali
 23=Allarme cumulativo morsettiera
 24=Errore bus di comunicazione
 25=Errore di comunicazione RS485 ausiliaria
@@ -27,6 +27,6 @@
 27=Presenza tensione uscite
 28=Assenza tensione ausiliaria
 29=Presenza alimentazione diagnostica
-30=Assenza 110V
+30=Assenza tensione 110V
 31=Presenza alimentazione esterna
 32=Assenza scheda espansione I/O
