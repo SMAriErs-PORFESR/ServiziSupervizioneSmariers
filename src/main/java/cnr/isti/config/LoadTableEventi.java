@@ -105,6 +105,9 @@ public class LoadTableEventi {
 				// get the property value and print it out
 				 String tipo = "Evento";
 				String[] r = prop.getProperty(String.valueOf(i)).split(",");
+				if(r == null) {
+					return new Pair<>("", "");
+				}
 				if(r[1].equals("1")) {
 					tipo = "Evento";
 				}
@@ -124,5 +127,7 @@ public class LoadTableEventi {
 
 		return  new Pair<>("", "");
 	}
+
+	
 
 }

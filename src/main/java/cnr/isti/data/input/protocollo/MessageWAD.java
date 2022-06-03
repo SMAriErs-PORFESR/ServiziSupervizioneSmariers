@@ -1,10 +1,13 @@
 package cnr.isti.data.input.protocollo;
 
 import java.util.Arrays;
+import java.util.Map;
 
 import com.alibaba.fastjson2.annotation.JSONField;
 
-import cnr.isti.data.input.protocollo.decode.TableCodiceEventi;
+import cnr.isti.config.LoadTableEventi;
+import cnr.isti.data.input.protocollo.decode.deprecated.TableCodiceEventi;
+import cnr.isti.data.input.protocollo.util.Pair;
 import cnr.isti.data.input.protocollo.util.Service;
 
 public class MessageWAD {
@@ -38,9 +41,11 @@ public class MessageWAD {
 		dett2 = String.format("%02x", range[3]);
 		dett3 = String.format("%02x", range[4]);
 		dett4 = String.format("%02x", range[5]);
+		LoadTableEventi lte = new LoadTableEventi();
+	    Pair<String, String> pair = lte.getDiagnosticaDesc(range[0], range[1] & 0xff);
 		data = Service.bytesToLong(Arrays.copyOfRange(range, 6, 10));
-		descrizione = TableCodiceEventi.getDesc(Integer.decode("0x"+cod));
-		tipo  = TableCodiceEventi.getTipo(Integer.decode("0x"+cod));
+		descrizione = pair.getPrimo();//TableCodiceEventi.getDesc(Integer.decode("0x"+cod));
+		tipo  = pair.getSecondo();//TableCodiceEventi.getTipo(Integer.decode("0x"+cod));
 		cent = range[10];
 
 	}

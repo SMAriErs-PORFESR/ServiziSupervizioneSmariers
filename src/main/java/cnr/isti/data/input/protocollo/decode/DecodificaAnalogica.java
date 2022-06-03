@@ -6,6 +6,7 @@ import java.util.Arrays;
 
 import com.alibaba.fastjson2.annotation.JSONField;
 
+import cnr.isti.data.input.protocollo.decode.deprecated.TableAnalog;
 import cnr.isti.data.input.protocollo.util.Service;
 
 public class DecodificaAnalogica {

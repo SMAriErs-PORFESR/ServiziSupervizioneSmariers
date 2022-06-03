@@ -1,4 +1,4 @@
-package cnr.isti.data.input.protocollo.decode;
+package cnr.isti.data.input.protocollo.decode.deprecated;
 
 public enum TableAnalog {
 	
