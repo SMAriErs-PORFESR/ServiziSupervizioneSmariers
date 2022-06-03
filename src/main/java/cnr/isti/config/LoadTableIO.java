@@ -21,7 +21,8 @@ public class LoadTableIO {
 		 Map<String,String> table =  new HashMap<String,String>();
 		 String type = "input";
 		 if(io ==2) type = "output";
-		 if(io ==3) type = "diagnostica";
+		 if(io ==3) type = "diagnostica";	
+		 if(io ==4) type = "analog";	 
 		 try (InputStream input = LoadTable.class.getClassLoader()
 					.getResourceAsStream(Address + "."+type+".txt")) {
 
@@ -57,7 +58,10 @@ public class LoadTableIO {
 						}
 
 				}
-
+				log.error("** MANCA FILE***");
+				log.error(type);
+				log.error(address);
+				log.error("** FINE MANCA FILE***");
 			} catch (IOException ex) {
 				log.error(ex, ex);
 			}

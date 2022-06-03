@@ -74,7 +74,7 @@ public class MessageDiretto {
 		for(int i =0 ; i<analog; i++) {
 			byte[] win = Arrays.copyOfRange(range, (3*i)+(diginput/8)+8, (3*i)+(diginput/8)+8+3);
 			//analogs.add(new Integer(range[i+diginput+8]));
-			DecodificaAnalogica es = new DecodificaAnalogica(win);
+			DecodificaAnalogica es = new DecodificaAnalogica(range[0],win);
 			analogs.add(es);
 			
 		}
@@ -85,7 +85,7 @@ public class MessageDiretto {
 			digoutouts.add(new Integer(range[index]));
 			
 		}
-		DigiOutput = new DecodificaDigitalOutput(digoutouts);
+		DigiOutput = new DecodificaDigitalOutput(range[0], digoutouts);
 		lastindex=  index;
 		//dett4 = String.format("%02x", range[5]);
         //System.out.println();

@@ -31,7 +31,7 @@ public class DecodificaAnalogica {
 		
 	}
 	
-	public DecodificaAnalogica(byte[] msg) {
+	public DecodificaAnalogica(byte address, byte[] msg) {
 		byte spacca = msg[0];
 		tipo = Service.bitExtracted(spacca, 1, 1);
 		segno = Service.bitExtracted(spacca, 1, 8);
@@ -39,12 +39,12 @@ public class DecodificaAnalogica {
 		byte[] v = Arrays.copyOfRange(msg, 1, 3);
 
 		valore = Service.TwobytesToLong(v);
+		Analog analog = new Analog(address);
+		descrizione =  analog.getDesc(canale);
 		
-		descrizione =  TableAnalog.getDesc(canale);
+		precision  =  analog.getPrecision(canale);
 		
-		precision  =  TableAnalog.getPrecision(canale);
-		
-		misura = TableAnalog.getMisure(canale);
+		misura = analog.getMisure(canale);
 		
 		//System.out.println();
 		

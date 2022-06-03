@@ -28,7 +28,7 @@ public class MessageLog {
 		ind = String.format("%02x", range[0]);
 		byte[] cod = Arrays.copyOfRange(range, 1, 6);
 
-		idcanale = new DecodificaAnalogica(cod);
+		idcanale = new DecodificaAnalogica(range[0],cod);
 
 		byte[] Time = Arrays.copyOfRange(range, 6, 10);// 4
 		data = Service.getDateTime( Service.bytesToLong(Time));
