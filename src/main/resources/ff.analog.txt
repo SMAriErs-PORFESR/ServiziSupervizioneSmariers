@@ -23,3 +23,4 @@
 23=Cosfi di uscita fase W,,0.001
 24=Frequenza di uscita fase W,Hz,0.1
 25=Temperatura ambiente,°C,0.1
+26=SCORTA,,1.0

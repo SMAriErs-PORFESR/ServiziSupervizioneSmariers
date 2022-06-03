@@ -48,11 +48,12 @@ public class RequestTestRegolaritaAnalog {
 		
 	}
     
-	private void send(byte[] c, Topic d) throws IOException {
+	private void send(byte[] c, Topic d)  {
+		try {
 		SenderTCP sender = new SenderTCP();
 		byte[] baos = sender.Send(c);
           //  System.out.println( Hex.encodeHexString(baos.toByteArray())); 
-            System.out.println(Hex.encodeHexString(baos));
+		 System.out.println(Hex.encodeHexString(baos));
             Reader read = new Reader();
             read.Read(baos);
             
@@ -66,6 +67,9 @@ public class RequestTestRegolaritaAnalog {
 					
 					pub.send(jsonOutput.getBytes(), "/"+message.getAddress(), Topic.REG_VALORE);
 					
+				}
+		}catch (Exception e) {
+			 System.out.println(e);
 				}
 	}
 	
