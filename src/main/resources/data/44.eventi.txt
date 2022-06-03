@@ -1,0 +1,12 @@
+1=Interruttore I1 chiuso,1,1
+2=Interruttore I1 aperto,1,1
+3=Interruttore I1 scattato,3,1
+4=Interruttore I2 chiuso,1,2
+5=Interruttore I2 aperto,1,2
+6=Interruttore I2 scattato per magnetotermico,3,2
+7=Interruttore I2 scattato per differenziale,3,2
+8=Selettore comandi su remoto,1,3
+9=Selettore comandi su locale,1,3
+95=Interruttore I1 stato ignoto,1,1
+96=Interruttore I2 stato ignoto,1,2
+

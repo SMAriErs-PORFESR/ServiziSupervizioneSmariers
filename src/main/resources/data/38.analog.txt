@@ -1,0 +1,2 @@
+1=Tensione batteria,V,0.01
+2=Corrente batteria,A,0.01

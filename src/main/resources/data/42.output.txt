@@ -1,0 +1,8 @@
+1=Prova a vuoto
+2=Prova GE
+3=SCORTA
+4=SCORTA
+5=SCORTA
+6=SCORTA
+7=SCORTA
+8=SCORTA

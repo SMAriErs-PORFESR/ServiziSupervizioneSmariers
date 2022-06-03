@@ -1,0 +1,16 @@
+1=Alimentazione cestello
+2=Presenza tensione comandi
+3=Interruttore I1 aperto
+4=Interruttore I1 chiuso
+5=Interruttore I1 scattato
+6=Sezionatore S1 aperto
+7=Sezionatore S1 chiuso
+8=Sezionatore S2 aperto
+9=Sezionatore S2 chiuso
+10=Quadro azionamento OFF
+11=SCORTA
+12=Disgiuntore batteria OK
+13=Alimentazione carica batterie presente
+14=Carica batterie funzionante
+15=Presenza alimentazione comandi 110V
+16=Selettore su locale

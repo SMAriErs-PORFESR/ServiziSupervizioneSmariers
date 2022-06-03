@@ -1,0 +1,4 @@
+1=Corrente IL1,A,1.0
+2=Corrente IL2,A,1.0
+3=Corrente IL3,A,1.0
+4=Corrente residua IE,A,1.0

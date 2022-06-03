@@ -24,7 +24,7 @@ public class LoadTableIO {
 		 if(io ==3) type = "diagnostica";	
 		 if(io ==4) type = "analog";	 
 		 try (InputStream input = LoadTable.class.getClassLoader()
-					.getResourceAsStream(Address + "."+type+".txt")) {
+					.getResourceAsStream("data/"+Address + "."+type+".txt")) {
 
 				// try (InputStream input = new FileInputStream("path/to/config.properties")) {
 				if (input != null) {

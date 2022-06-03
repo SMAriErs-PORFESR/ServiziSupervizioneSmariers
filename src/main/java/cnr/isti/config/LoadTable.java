@@ -21,7 +21,7 @@ public class LoadTable {
 		String Address = String.format("%02x", address);
 		 Map<String,String> table =  new HashMap<String,String>();
 		 try (InputStream input = LoadTable.class.getClassLoader()
-					.getResourceAsStream(Address + ".diagnostica.properties")) {
+					.getResourceAsStream("data/"+Address + ".diagnostica.properties")) {
 
 				// try (InputStream input = new FileInputStream("path/to/config.properties")) {
 				if (input != null) {

@@ -1,0 +1,14 @@
+1=Temperatura 1,°C,1.0
+2=Temperatura 2,°C,1.0
+3=Corrente cavo 1,A,0.01
+4=Corrente cavo 2,A,0.01
+5=Corrente cavo 3,A,0.01
+6=Corrente cavo 4,A,0.01
+7=Corrente cavo 5,A,0.01
+8=Corrente cavo 6,A,0.01
+9=Corrente cavo 7,A,0.01
+10=Corrente cavo 8,A,0.01
+11=Corrente cavo 9,A,0.01
+12=Corrente cavo 10,A,0.01
+13=Corrente cavo 11,A,0.01
+14=Corrente cavo 12,A,0.01

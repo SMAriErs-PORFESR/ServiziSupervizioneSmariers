@@ -1,0 +1,22 @@
+1=Evento nullo,1,0
+2=Remote trip,1,0
+3=Avviamento prima soglia protezione massima corrente (Start I>),3,0
+4=Avviamento seconda soglia protezione massima corrente (Start I>>),3,0
+5=Avviamento prima soglia protezione massima corrente residua (Start IE>),3,0
+6=Avviamento seconda soglia protezione massima corrente residua (Start IE>>),3,0
+7=Intervento prima soglia protezione massima corrente (Trip I>),3,0
+8=Intervento seconda soglia protezione massima corrente (Trip I>>),3,0
+9=Intervento prima soglia protezione massima corrente residua (Trip IE>),3,0
+10=Intervento seconda soglia protezione massima corrente residua (Trip IE>>),3,0
+16=Stato fasi,3,0
+32=Reset relays,1,0
+48=Test OFF,1,0
+49=Test prima soglia protezione massima corrente (Test I> no-trip),1,0
+50=Test seconda soglia protezione massima corrente (Test I>> no-trip),1,0
+51=Test prima soglia protezione massima corrente residua (Test IE> no-trip),1,0
+52=Test seconda soglia protezione massima corrente residua (Test IE>> no-trip),1,0
+53=Test trip prima soglia protezione massima corrente (Test I> trip),1,0
+54=Test trip seconda soglia protezione massima corrente (Test I>> trip),1,0
+55=Test trip prima soglia protezione massima corrente residua (Test IE> trip),1,0
+56=Test trip seconda soglia protezione massima corrente residua (Test IE>> trip),1,0
+

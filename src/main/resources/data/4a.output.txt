@@ -1,0 +1,16 @@
+1=Apertura sezionatore S1
+2=Chiusura sezionatore S1
+3=Apertura sezionatore S2
+4=Chiusura sezionatore S2
+5=Apertura sezionatore S3
+6=Chiusura sezionatore S3
+7=SCORTA
+8=SCORTA
+9=SCORTA
+10=SCORTA
+11=Apertura interrutore I1
+12=Chiusura interrutore I1
+13=SCORTA
+14=SCORTA
+15=SCORTA
+16=SCORTA

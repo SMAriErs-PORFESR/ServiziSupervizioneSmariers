@@ -1,0 +1,8 @@
+1=Chiusura interruttore I2 (1kV)
+2=Apertura interruttore I2 (1kV)
+3=Chiusura interruttore I1 (BT)
+4=Apertura interruttore I1 (BT)
+5=SCORTA
+6=SCORTA
+7=SCORTA
+8=SCORTA

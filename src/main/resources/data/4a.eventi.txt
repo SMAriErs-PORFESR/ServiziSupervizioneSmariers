@@ -1,0 +1,18 @@
+1=I1 chiuso (ingresso ENEL),1,1
+2=I1 aperto (ingresso ENEL),1,1
+3=I1 scattato (ingresso ENEL),3,1
+4=S1 chiuso (emergenza UPS),1,2
+5=S1 aperto (emergenza UPS),1,2
+6=S2 chiuso (bypass UPS),1,3
+7=S2 aperto (bypass UPS),1,3
+8=S3 chiuso (uscita UPS),1,4
+9=S3 aperto (uscita UPS),1,4
+10=Telecomandi abilitati,1,5
+11=Telecomandi disabilitati,1,5
+12=Interruttori chiusi,1,6
+13=Interruttori aperti,3,6
+14=ISOL 144Vcc regolare,1,7
+15=ISOL 144Vcc allarme,3,7
+16=ISOL 150Vca regolare,1,8
+17=ISOL 150Vca allarme,3,8
+

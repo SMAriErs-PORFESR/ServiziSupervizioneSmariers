@@ -1,0 +1,16 @@
+1=Dati validi
+2=Assenza corrente
+3=Condensatore guasto
+4=Lampada bassa potenza
+5=Lampada fine vita
+6=Lampada interrotta
+7=Guasto generico
+8=Ballast elettronico rotto
+9=Starter rotto
+10=Driver rotto
+11=SCORTA
+12=Riscaldamento lampada
+13=Accensione forzata
+14=SCORTA
+15=SCORTA
+16=SCORTA

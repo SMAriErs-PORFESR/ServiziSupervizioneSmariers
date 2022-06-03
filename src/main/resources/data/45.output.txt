@@ -1,0 +1,8 @@
+1=Apertura interruttore I1
+2=Chiusura interruttore I1
+3=Apertura sezionatore S1
+4=Chiusura sezionatore S1
+5=Apertura sezionatore S2
+6=Chiusura sezionatore S2
+7=Apertura switch batteria 1
+8=Apertura switch batteria 2

@@ -1,0 +1,8 @@
+1=BA1: Apertura interruttore I1 (BT)
+2=BA1: Chiusura interruttore I1 (BT)
+3=BA1: Apertura interruttore I2 (1kV)
+4=BA1: Chiusura interruttore I2 (1kV)
+5=BA2: Apertura interruttore I1 (BT)
+6=BA2: Chiusura interruttore I1 (BT)
+7=BA2: Apertura interruttore I2 (1kV)
+8=BA2: Chiusura interruttore I2 (1kV)

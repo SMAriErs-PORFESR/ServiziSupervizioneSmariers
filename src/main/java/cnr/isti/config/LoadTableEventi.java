@@ -20,7 +20,7 @@ public class LoadTableEventi {
 		String Address = String.format("%02x", address);
 		 Map<String,String> table =  new HashMap<String,String>();
 		 try (InputStream input = LoadTable.class.getClassLoader()
-					.getResourceAsStream(Address + ".eventi.properties")) {
+					.getResourceAsStream("data/"+Address + ".eventi.properties")) {
 
 				// try (InputStream input = new FileInputStream("path/to/config.properties")) {
 				if (input != null) {
@@ -65,7 +65,7 @@ public class LoadTableEventi {
 	public Pair<String,String> getDiagnosticaDesc(byte address, int i) {
 		String Address = String.format("%02x", address);
 		try (InputStream input = LoadTableEventi.class.getClassLoader()
-				.getResourceAsStream(Address + ".eventi.properties")) {
+				.getResourceAsStream("data/"+Address + ".eventi.properties")) {
 
 			// try (InputStream input = new FileInputStream("path/to/config.properties")) {
 			if (input != null) {

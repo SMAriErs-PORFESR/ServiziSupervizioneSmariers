@@ -1,0 +1,7 @@
+1=Comando lampada,%,1.0
+2=Potenza lampada,W,0.1
+3=Durata totale vita lampada,,1.0
+4=PF,,1.0
+5=Tensione lampada,V,1.0
+6=Corrente lampada,A,0.01
+7=SCORTA,,1.0

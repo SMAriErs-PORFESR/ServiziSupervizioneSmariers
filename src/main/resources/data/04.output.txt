@@ -1,0 +1,16 @@
+1=Quadro Gruppo Elettrogeno: avvio manuale gruppo
+2=Quadro Gruppo Elettrogeno: Arresto di emergenza
+3=SCORTA
+4=SCORTA
+5=SCORTA
+6=SCORTA
+7=SCORTA
+8=SCORTA
+9=SCORTA
+10=SCORTA
+11=SCORTA
+12=SCORTA
+13=SCORTA
+14=SCORTA
+15=SCORTA
+16=SCORTA

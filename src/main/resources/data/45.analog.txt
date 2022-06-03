@@ -1,0 +1,8 @@
+1=Batteria 1: tensione,V,0.1
+2=Batteria 1: corrente,A,0.01
+3=Batteria 1: temperatura,°C,0.01
+4=Batteria 1: efficienza,%,1.0
+5=Batteria 2: tensione,V,0.1
+6=Batteria 2: corrente,A,0.01
+7=Batteria 2: temperatura,°C,0.01
+8=Batteria 2: efficienza,%,1.0
