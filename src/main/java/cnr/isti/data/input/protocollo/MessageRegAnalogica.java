@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.alibaba.fastjson2.annotation.JSONField;
 
+import cnr.isti.data.input.protocollo.decode.Analog;
 import cnr.isti.data.input.protocollo.decode.DecodificaRegValoreCanaleAnalogica;
 
 public class MessageRegAnalogica {
@@ -29,9 +30,10 @@ public class MessageRegAnalogica {
 		
 		Address = String.format("%02x", range[0]);
 		analog = range[1];
+		Analog analogtable = new Analog(range[0]);
 		int d = 1;
 		for(int i=0;  i<=(analog/2); i++) {
-			DecodificaRegValoreCanaleAnalogica dec = new DecodificaRegValoreCanaleAnalogica(range[i+2],d);
+			DecodificaRegValoreCanaleAnalogica dec = new DecodificaRegValoreCanaleAnalogica(range[i+2],d, analogtable);
 			d = d +2;
 			listdec.add(dec);
 			

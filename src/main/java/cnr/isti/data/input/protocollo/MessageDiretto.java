@@ -7,6 +7,7 @@ import java.util.List;
 
 import com.alibaba.fastjson2.annotation.JSONField;
 
+import cnr.isti.data.input.protocollo.decode.Analog;
 import cnr.isti.data.input.protocollo.decode.DecodificaAnalogica;
 import cnr.isti.data.input.protocollo.decode.DecodificaDiagnostica;
 import cnr.isti.data.input.protocollo.decode.DecodificaDigitalInputs;
@@ -70,11 +71,11 @@ public class MessageDiretto {
 			
 		}
 		DigiInput = new DecodificaDigitalInputs(range[0], diginputs);
-		
+		Analog analogtable = new Analog(range[0]);
 		for(int i =0 ; i<analog; i++) {
 			byte[] win = Arrays.copyOfRange(range, (3*i)+(diginput/8)+8, (3*i)+(diginput/8)+8+3);
 			//analogs.add(new Integer(range[i+diginput+8]));
-			DecodificaAnalogica es = new DecodificaAnalogica(range[0],win);
+			DecodificaAnalogica es = new DecodificaAnalogica(range[0],win,analogtable);
 			analogs.add(es);
 			
 		}

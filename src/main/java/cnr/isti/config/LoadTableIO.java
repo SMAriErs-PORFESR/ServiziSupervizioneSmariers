@@ -32,7 +32,7 @@ public class LoadTableIO {
 
 					// load a properties file
 					prop.load(input);
-					for(int i=0; i<=32; i++) {
+					for(int i=0; i<=64; i++) {
 					 table.put(String.valueOf(i),prop.getProperty(String.valueOf(i)));
 					}
 					return table;
@@ -53,19 +53,19 @@ public class LoadTableIO {
 
 					// get the property value and print it out
 
-					for(int i=0; i<=32; i++) {
+					for(int i=0; i<=64; i++) {
 						 table.put(String.valueOf(i),prop.getProperty(String.valueOf(i)));
 						}
 
 				}
-				log.error("** MANCA FILE***");
-				log.error(type);
-				log.error(address);
-				log.error("** FINE MANCA FILE***");
+				
 			} catch (IOException ex) {
 				log.error(ex, ex);
 			}
-		
+			log.error("** MANCA FILE***");
+			log.error(type);
+			log.error(address);
+			log.error("** FINE MANCA FILE***");
 		return table;
 	}
 

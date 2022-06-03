@@ -23,7 +23,10 @@ public class DecodificaDigitalInputs {
 		for (Integer i : diginputs) {
 			for (int d = 1; d <= 8; d++) {
 				int result = Service.bitExtracted(i, 1, d);
-				Inputs.add(new Triple<String, Integer, Integer>( listinput.get(k) ,result, k));
+				String ele = listinput.get(String.valueOf(k));
+				/*if(ele==null) 
+					System.out.println();*/
+				Inputs.add(new Triple<String, Integer, Integer>(ele ,result, k));
 				/*if (result == 0) {
 					Inputs.add(new Triple( TableDigitalInput.getDesc(k) ,new Boolean(false), k));
 				} else {

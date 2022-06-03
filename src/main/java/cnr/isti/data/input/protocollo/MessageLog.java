@@ -5,6 +5,7 @@ import java.util.Date;
 
 import com.alibaba.fastjson2.annotation.JSONField;
 
+import cnr.isti.data.input.protocollo.decode.Analog;
 import cnr.isti.data.input.protocollo.decode.DecodificaAnalogica;
 import cnr.isti.data.input.protocollo.util.Service;
 
@@ -27,8 +28,8 @@ public class MessageLog {
 	public MessageLog(byte[] range) {
 		ind = String.format("%02x", range[0]);
 		byte[] cod = Arrays.copyOfRange(range, 1, 6);
-
-		idcanale = new DecodificaAnalogica(range[0],cod);
+		Analog analogtable = new Analog(range[0]);
+		idcanale = new DecodificaAnalogica(range[0],cod,analogtable);
 
 		byte[] Time = Arrays.copyOfRange(range, 6, 10);// 4
 		data = Service.getDateTime( Service.bytesToLong(Time));

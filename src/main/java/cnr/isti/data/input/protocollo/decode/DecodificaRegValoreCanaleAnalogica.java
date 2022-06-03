@@ -20,7 +20,7 @@ public class DecodificaRegValoreCanaleAnalogica {
 	
 	
 	
-	public DecodificaRegValoreCanaleAnalogica(byte msg, int n) {
+	public DecodificaRegValoreCanaleAnalogica(byte msg, int n, Analog analog) {
 		this.n= n;
 		this.n1= n+1;
 		analogica_n_allarme = Service.bitExtracted(msg,1,1);
@@ -31,8 +31,8 @@ public class DecodificaRegValoreCanaleAnalogica {
 		analogica_n1_warning= Service.bitExtracted(msg,1,6);
 		analogica_n1_errore= Service.bitExtracted(msg,1,7);
 		offline_n1= Service.bitExtracted(msg,1,8);
-		descrizione_n =  TableAnalog.getDesc(n);
-		descrizione_n1 =  TableAnalog.getDesc(n1);
+		descrizione_n =  analog.getDesc(n)+" "+analog.getMisure(n);
+		descrizione_n1 =  analog.getDesc(n1)+" "+analog.getMisure(n1);
 	}
 
 
