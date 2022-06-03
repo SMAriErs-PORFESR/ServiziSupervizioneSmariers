@@ -34,7 +34,7 @@ public class LoadTableIO {
 					for(int i=0; i<=32; i++) {
 					 table.put(String.valueOf(i),prop.getProperty(String.valueOf(i)));
 					}
-
+					return table;
 				}
 
 			} catch (IOException ex) {

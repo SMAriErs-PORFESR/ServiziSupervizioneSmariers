@@ -69,7 +69,7 @@ public class MessageDiretto {
 			diginputs.add(new Integer(range[i+8]));
 			
 		}
-		DigiInput = new DecodificaDigitalInputs(diginputs);
+		DigiInput = new DecodificaDigitalInputs(range[0], diginputs);
 		
 		for(int i =0 ; i<analog; i++) {
 			byte[] win = Arrays.copyOfRange(range, (3*i)+(diginput/8)+8, (3*i)+(diginput/8)+8+3);
