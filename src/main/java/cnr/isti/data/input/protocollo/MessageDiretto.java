@@ -7,6 +7,7 @@ import java.util.List;
 
 import com.alibaba.fastjson2.annotation.JSONField;
 
+import cnr.isti.config.LoadTableNomiPeriferica;
 import cnr.isti.data.input.protocollo.decode.Analog;
 import cnr.isti.data.input.protocollo.decode.DecodificaAnalogica;
 import cnr.isti.data.input.protocollo.decode.DecodificaDiagnostica;
@@ -19,6 +20,8 @@ public class MessageDiretto {
 
 	@JSONField(name = "Address")//, ordinal = 1)
 	String Address;
+	@JSONField(name = "AddressName")//, ordinal = 1)
+	String Nameaddress;
 	@JSONField(name = "Diagnostica")
 	DecodificaDiagnostica diagnostica;
 	
@@ -56,7 +59,7 @@ public class MessageDiretto {
 		this.millisencod=date.getTime();
 		Address = String.format("%02x", range[0]);
 		byte[] bitdiagnostica = Arrays.copyOfRange(range, 1, 5);
-		
+		Nameaddress = new LoadTableNomiPeriferica().getDesc(range[0]);
 		diagnostica= new DecodificaDiagnostica(bitdiagnostica);
 		
 		Tdiagnostica= new DecodificaTDiagnostica(bitdiagnostica, range[0]);
@@ -107,6 +110,22 @@ public class MessageDiretto {
 
 
 	
+
+
+
+
+
+	public String getNameaddress() {
+		return Nameaddress;
+	}
+
+
+
+
+
+	public void setNameaddress(String nameaddress) {
+		Nameaddress = nameaddress;
+	}
 
 
 
