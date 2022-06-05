@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
+import cnr.isti.data.input.protocollo.decode.deprecated.TableTipiEvento;
 import cnr.isti.data.input.protocollo.util.Pair;
 
 
@@ -73,10 +74,12 @@ public class LoadTableEventi {
 
 				// load a properties file
 				prop.load(input);
+				
 				 String tipo = "Evento";
 				// get the property value and print it out
 				String[] r = prop.getProperty(String.valueOf(i)).split(",");
-				if(r[1].equals("1")) {
+				tipo = TableTipiEvento.getDesc(Integer.valueOf(r[1]));
+				/*if(r[1].equals("1")) {
 					tipo = "Evento";
 				}
 				if(r[1].equals("2")) {
@@ -84,7 +87,7 @@ public class LoadTableEventi {
 				}
 				if(r[1].equals("3")) {
 					tipo = "Warning";
-				}
+				}*/
 				log.trace(prop.getProperty(String.valueOf(i)));
 				return new Pair<>(r[0], tipo);
 			}
