@@ -17,7 +17,10 @@ public class LoadTableTest {
 		LoadTableEventi lte = new LoadTableEventi();
 		System.out.println(lte.getDiagnosticaDesc((byte) 0x39, 33));
 		System.out.println(lte.getTable(((byte) 0x39)));
-
+		
+		LoadTableNomiPeriferica ltnm = new LoadTableNomiPeriferica();
+		
+		System.out.println(ltnm.getDesc((byte) 0x39));
 
 	}
 }
