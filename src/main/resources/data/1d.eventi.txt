@@ -1,0 +1,13 @@
+1=PSU stato OFF,1,1
+2=PSU stato ON,1,1
+3=Caricabatterie non inserito,1,2
+4=Caricabatterie inserito,1,2
+5=Corrente regolare,1,3
+6=Allarme sovracorrente,3,3
+7=Temperatura regolare PSU,1,4
+8=Allarme temperatura PSU,3,4
+9=Tensione regolare,1,5
+10=Allarme sovratensione,3,5
+11=Temperatura regolare batteria,1,6
+12=Allarme temperatura batteria,3,6
+

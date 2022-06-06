@@ -1,0 +1,8 @@
+1=Comando accensione
+2=Carica batteria inserito
+3=SCORTA
+4=SCORTA
+5=SCORTA
+6=SCORTA
+7=SCORTA
+8=SCORTA

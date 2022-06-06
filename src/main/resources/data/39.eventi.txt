@@ -62,6 +62,22 @@
 62=Tensione canale 12: sopra soglia,2,16
 63=Tensione canale 12: sotto soglia,2,16
 64=Tensione canale 12: fuori media,2,16
+65=Tensione canale 13: non gestita,1,17
+66=Tensione canale 13: sopra soglia,2,17
+67=Tensione canale 13: sotto soglia,2,17
+68=Tensione canale 13: fuori media,2,17
+69=Tensione canale 14: non gestita,1,18
+70=Tensione canale 14: sopra soglia,2,18
+71=Tensione canale 14: sotto soglia,2,18
+72=Tensione canale 14: fuori media,2,18
+73=Tensione canale 15: non gestita,1,19
+74=Tensione canale 15: sopra soglia,2,19
+75=Tensione canale 15: sotto soglia,2,19
+76=Tensione canale 15: fuori media,2,19
+77=Tensione canale 16: non gestita,1,20
+78=Tensione canale 16: sopra soglia,2,20
+79=Tensione canale 16: sotto soglia,2,20
+80=Tensione canale 16: fuori media,2,20
 95=Tensione complessiva: normalità,1,1
 96=Corrente: normalità,1,2
 97=Temperatura ambiente: normalità,1,3
@@ -78,4 +94,8 @@
 108=Tensione canale 10: normalità,1,14
 109=Tensione canale 11: normalità,1,15
 110=Tensione canale 12: normalità,1,16
+111=Tensione canale 13: normalità,1,17
+112=Tensione canale 14: normalità,1,18
+113=Tensione canale 15: normalità,1,19
+114=Tensione canale 16: normalità,1,20
 

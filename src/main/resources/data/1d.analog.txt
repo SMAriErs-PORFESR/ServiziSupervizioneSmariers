@@ -1,0 +1,5 @@
+1=Tensione uscita,V,0.01
+2=Corrente uscita,A,0.001
+3=Tensione ingresso,V,0.01
+4=Temperatura interna,°C,0.1
+5=Temperatura esterna batteria,°C,0.1
