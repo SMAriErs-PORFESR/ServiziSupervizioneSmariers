@@ -94,8 +94,8 @@ public class DecodeMessage {
 				if (r.length > 10/* & !Address.contains("00") */) {
 
 					MessageDiretto md = new MessageDiretto(r, date);
-					// String jsonOutput = JSON.toJSONString(md);
-				//	log.info(jsonOutput);
+					 String jsonOutput = JSON.toJSONString(md);
+					log.info(jsonOutput);
 					lmd.add(md);
 					index += md.getLastindex() ;
 
