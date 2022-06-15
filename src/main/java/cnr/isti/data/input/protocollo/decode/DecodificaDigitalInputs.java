@@ -19,6 +19,7 @@ public class DecodificaDigitalInputs {
 	public DecodificaDigitalInputs(byte address, List<Integer> diginputs) {
 		int k = 1;
 		LoadTableIO io = new LoadTableIO();
+		if(!diginputs.isEmpty()) {
 		 Map<String, String> listinput = io.getTable(address, 1);
 		for (Integer i : diginputs) {
 			for (int d = 1; d <= 8; d++) {
@@ -35,6 +36,7 @@ public class DecodificaDigitalInputs {
 				
 				k++;
 			}
+		}
 
 		}
 	}

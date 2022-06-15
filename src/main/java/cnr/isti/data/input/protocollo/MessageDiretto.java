@@ -81,7 +81,10 @@ public class MessageDiretto {
 
 		}
 		DigiInput = new DecodificaDigitalInputs(range[0], diginputs);
-		Analog analogtable = new Analog(range[0]);
+		Analog analogtable = null;
+		if(analog>0) {
+			analogtable = new Analog(range[0]);
+		}
 		for (int i = 0; i < analog; i++) {
 			try {
 				byte[] win = Arrays.copyOfRange(range, (3 * i) + (diginput / 8) + 8, (3 * i) + (diginput / 8) + 8 + 3);
