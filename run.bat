@@ -1,4 +1,3 @@
 git pull
-mvn clean
-mvn install
-mvn exec:java
+start /w mvn install
+start /w mvn exec:java
