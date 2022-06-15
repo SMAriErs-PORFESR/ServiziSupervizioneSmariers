@@ -100,7 +100,7 @@ public class Reader {
 	private void readmsg(byte[] msg, Date d , byte tag, String add, String addper) {
 
 		dm = new DecodeMessage(msg, d, tag, add, addper);
-		log.info(dm);
+		//log.info(dm);
 	/*	byte[] range = Arrays.copyOfRange(msg, 2, msg.length);
 
 		String ind = String.format("%02x", range[0]);
