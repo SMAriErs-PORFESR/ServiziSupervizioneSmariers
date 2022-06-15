@@ -1,2 +1,2 @@
 git pull
-mvn exec:run
+mvn exec:java
