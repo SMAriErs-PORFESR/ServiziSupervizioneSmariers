@@ -6,5 +6,6 @@ for name in *.FSX; do
 	python3 ReadSQLiteListIO.py $name
 	echo -----  Eveni ----------
 	python3 ReadSQLiteEventi.py $name
+	python3 ReadSQLiteNomiPeriferiche.py $name
 	echo -----FINE---CILCO------ 
 done
