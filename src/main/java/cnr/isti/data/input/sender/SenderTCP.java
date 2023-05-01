@@ -39,12 +39,12 @@ public class SenderTCP {
 
 	public byte[] Send(byte[] message) {
 		
-		log.info("Client Started");
-
+		//log.info("Client Started");
+		log.info("Client Started "+hostname+":"+port);
 		try (Socket socket = new Socket(hostname, port)) {
 			socket.setSoTimeout(2000);
 
-			log.info("Client Opened");
+			log.info("Client Opened "+hostname+":"+port);
 			log.info("Send: ");
 			log.info(Hex.encodeHexString(message));
 			DataOutputStream os = new DataOutputStream(new BufferedOutputStream(socket.getOutputStream()));
